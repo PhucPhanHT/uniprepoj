@@ -15,9 +15,17 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 DEBUG = os.environ.get('DEBUG', '0') == '1'
 HOST = os.environ.get('HOST', 'localhost')
 
-# Uncomment and set to the domain names this site is intended to serve.
-# You must do this once you set DEBUG to False.
-ALLOWED_HOSTS = [HOST]
+# Cho phép truy cập từ mọi Host hoặc danh sách trong biến môi trường ALLOWED_HOSTS
+ALLOWED_HOSTS = [h.strip() for h in os.environ.get('ALLOWED_HOSTS', '*').split(',') if h.strip()]
+
+# CSRF Trusted Origins (Hỗ trợ truy cập cả HTTP và HTTPS qua reverse proxy)
+CSRF_TRUSTED_ORIGINS = [
+    os.environ.get('SITE_FULL_URL', 'http://localhost').rstrip('/'),
+    'http://localhost',
+    'http://127.0.0.1',
+    'http://localhost:80',
+    'http://localhost:8080',
+]
 
 # Optional apps that DMOJ can make use of.
 INSTALLED_APPS += ()
@@ -108,7 +116,7 @@ STATICFILES_FINDERS += ('compressor.finders.CompressorFinder',)
 ADMINS = ()
 
 # The sender for the aforementioned emails.
-SERVER_EMAIL = 'VNOJ: VNOI Online Judge <vnoj@vnoi.info>'
+SERVER_EMAIL = os.environ.get('SERVER_EMAIL', 'NDOJ: Nguyễn Du Online Judge <noreply@ndoj.edu.vn>')
 
 
 ################################################
@@ -135,10 +143,10 @@ DMOJ_RESOURCES = '/assets/resources/'
 ############################################
 
 ## DMOJ site display settings.
-SITE_NAME = 'VNOJ'
+SITE_NAME = os.environ.get('SITE_NAME', 'NDOJ')
 SITE_FULL_URL = os.environ.get('SITE_FULL_URL', 'http://localhost/')
-SITE_LONG_NAME = 'VNOJ: VNOI Online Judge'
-SITE_ADMIN_EMAIL = 'leduythuc@vnoi.info'
+SITE_LONG_NAME = os.environ.get('SITE_LONG_NAME', 'NDOJ: Nguyễn Du Online Judge - THPT Nguyễn Du, Hà Tĩnh')
+SITE_ADMIN_EMAIL = os.environ.get('SITE_ADMIN_EMAIL', 'admin@ndoj.edu.vn')
 TERMS_OF_SERVICE_URL = None
 
 ## Media files settings.

@@ -1,0 +1,314 @@
+[
+    {
+        "model": "judge.profile",
+        "pk": 1,
+        "fields": {
+            "about": "Tài khoản Quản trị viên hệ thống NDOJ - Trường THPT Nguyễn Du, Hà Tĩnh.",
+            "ace_theme": "github",
+            "current_contest": null,
+            "display_rank": "admin",
+            "ip": "127.0.0.1",
+            "language": 1,
+            "last_access": "2026-10-19T00:00:00Z",
+            "math_engine": "auto",
+            "mute": false,
+            "organizations": [
+                1
+            ],
+            "performance_points": 0.0,
+            "points": 0.0,
+            "problem_count": 0,
+            "rating": 1500,
+            "timezone": "Asia/Ho_Chi_Minh",
+            "user": 1,
+            "user_script": ""
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 1,
+        "fields": {
+            "date_joined": "2026-10-19T00:00:00Z",
+            "email": "admin@ndoj.edu.vn",
+            "first_name": "Admin",
+            "groups": [],
+            "is_active": true,
+            "is_staff": true,
+            "is_superuser": true,
+            "last_login": "2026-10-19T00:00:00Z",
+            "last_name": "NDOJ",
+            "password": "pbkdf2_sha256$36000$eFRRZq4DgktS$md1gk0bBJb7PH/+3YEXkcCW8K+KmiI+y/amqR32G2DY=",
+            "user_permissions": [],
+            "username": "admin"
+        }
+    },
+    {
+        "model": "judge.organization",
+        "pk": 1,
+        "fields": {
+            "about": "Trường THPT Nguyễn Du - Huyện Nghi Xuân, Tỉnh Hà Tĩnh. Ngôi trường mang tên Đại thi hào dân tộc Nguyễn Du trên mảnh đất Tiên Điền giàu truyền thống hiếu học.",
+            "access_code": null,
+            "admins": [
+                1
+            ],
+            "creation_date": "2026-10-19T00:00:00Z",
+            "is_open": true,
+            "slug": "thpt-nguyen-du",
+            "name": "Trường THPT Nguyễn Du - Hà Tĩnh",
+            "short_name": "THPT Nguyễn Du",
+            "slots": null
+        }
+    },
+    {
+        "model": "judge.problemtype",
+        "pk": 1,
+        "fields": {
+            "name": "coban",
+            "full_name": "Lập trình cơ bản"
+        }
+    },
+    {
+        "model": "judge.problemtype",
+        "pk": 2,
+        "fields": {
+            "name": "thuat-toan",
+            "full_name": "Cấu trúc dữ liệu & Thuật toán"
+        }
+    },
+    {
+        "model": "judge.problemtype",
+        "pk": 3,
+        "fields": {
+            "name": "quy-hoach-dong",
+            "full_name": "Quy hoạch động"
+        }
+    },
+    {
+        "model": "judge.problemtype",
+        "pk": 4,
+        "fields": {
+            "name": "hsg",
+            "full_name": "Luyện thi Học sinh giỏi"
+        }
+    },
+    {
+        "model": "judge.problemgroup",
+        "pk": 1,
+        "fields": {
+            "name": "tin-10",
+            "full_name": "Tin học 10 (GDPT 2018)"
+        }
+    },
+    {
+        "model": "judge.problemgroup",
+        "pk": 2,
+        "fields": {
+            "name": "tin-11",
+            "full_name": "Tin học 11 (GDPT 2018)"
+        }
+    },
+    {
+        "model": "judge.problemgroup",
+        "pk": 3,
+        "fields": {
+            "name": "tin-12",
+            "full_name": "Tin học 12 (GDPT 2018)"
+        }
+    },
+    {
+        "model": "judge.problemgroup",
+        "pk": 4,
+        "fields": {
+            "name": "doi-tuyen-hsg",
+            "full_name": "Đội tuyển HSG Tin học"
+        }
+    },
+    {
+        "model": "judge.judge",
+        "pk": 1,
+        "fields": {
+            "name": "ndoj_judge_1",
+            "auth_key": "ndoj_secret_judge_key_2026",
+            "is_blocked": false,
+            "is_disabled": false,
+            "online": false,
+            "description": "Máy chấm tự động Docker NDOJ (Trường THPT Nguyễn Du - Hà Tĩnh)"
+        }
+    },
+    {
+        "model": "judge.problem",
+        "pk": 1,
+        "fields": {
+            "ac_rate": 0.0,
+            "allowed_languages": [
+                1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+            ],
+            "authors": [
+                1
+            ],
+            "banned_users": [],
+            "code": "hello_nd",
+            "curators": [],
+            "date": "2026-10-19T00:00:00Z",
+            "description": "# Xin chào THPT Nguyễn Du!\n\nChào mừng bạn đến với hệ thống chấm bài tự động **NDOJ (Nguyen Du Online Judge)** - Trường THPT Nguyễn Du, Nghi Xuân, Hà Tĩnh!\n\nNhiệm vụ đầu tiên của bạn là viết một chương trình đơn giản: In ra lời chào tới trường THPT Nguyễn Du thân yêu.\n\n## Yêu cầu đề bài\n\nChương trình không cần đọc dữ liệu đầu vào. Hãy in ra màn hình chính xác dòng chữ:\n\n```\nXin chao THPT Nguyen Du - Ha Tinh!\n```\n\n## Dữ liệu vào\n\n* Không có dữ liệu vào.\n\n## Dữ liệu ra\n\n* In ra một dòng duy nhất: `Xin chao THPT Nguyen Du - Ha Tinh!`\n\n## Ví dụ\n\n### Output mẫu\n```\nXin chao THPT Nguyen Du - Ha Tinh!\n```\n\n## Hướng dẫn bằng C++\n```cpp\n#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << \"Xin chao THPT Nguyen Du - Ha Tinh!\" << endl;\n    return 0;\n}\n```\n\n## Hướng dẫn bằng Python\n```python\nprint(\"Xin chao THPT Nguyen Du - Ha Tinh!\")\n```",
+            "group": 1,
+            "is_manually_managed": false,
+            "is_public": true,
+            "license": null,
+            "memory_limit": 65536,
+            "name": "Xin chào THPT Nguyễn Du",
+            "og_image": "",
+            "partial": false,
+            "points": 10.0,
+            "short_circuit": false,
+            "summary": "Bài tập làm quen thao tác nộp bài đầu tiên trên NDOJ",
+            "testers": [],
+            "time_limit": 1.0,
+            "types": [
+                1
+            ],
+            "user_count": 0
+        }
+    },
+    {
+        "model": "judge.problem",
+        "pk": 2,
+        "fields": {
+            "ac_rate": 0.0,
+            "allowed_languages": [
+                1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+            ],
+            "authors": [
+                1
+            ],
+            "banned_users": [],
+            "code": "sum_ab",
+            "curators": [],
+            "date": "2026-10-19T00:00:00Z",
+            "description": "# Tính tổng hai số A + B\n\nCho hai số nguyên ~A~ và ~B~. Hãy tính tổng của chúng.\n\n## Dữ liệu vào\n\n* Dòng duy nhất chứa hai số nguyên ~A~ và ~B~ cách nhau một dấu cách (~-10^9 \\le A, B \\le 10^9~).\n\n## Dữ liệu ra\n\n* In ra một số nguyên duy nhất là tổng ~A + B~.\n\n## Ví dụ\n\n### Input\n```\n15 27\n```\n\n### Output\n```\n42\n```\n\n## Ràng buộc & Subtask\n\n* **Subtask 1 (50% điểm):** ~0 \\le A, B \\le 10^4~\n* **Subtask 2 (50% điểm):** ~-10^9 \\le A, B \\le 10^9~",
+            "group": 1,
+            "is_manually_managed": false,
+            "is_public": true,
+            "license": null,
+            "memory_limit": 65536,
+            "name": "Tính tổng A + B",
+            "og_image": "",
+            "partial": true,
+            "points": 10.0,
+            "short_circuit": false,
+            "summary": "Tính tổng hai số nguyên cho học sinh làm quen đọc dữ liệu",
+            "testers": [],
+            "time_limit": 1.0,
+            "types": [
+                1
+            ],
+            "user_count": 0
+        }
+    },
+    {
+        "model": "judge.problem",
+        "pk": 3,
+        "fields": {
+            "ac_rate": 0.0,
+            "allowed_languages": [
+                1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+            ],
+            "authors": [
+                1
+            ],
+            "banned_users": [],
+            "code": "prime",
+            "curators": [],
+            "date": "2026-10-19T00:00:00Z",
+            "description": "# Kiểm tra số nguyên tố\n\nSố nguyên tố là số nguyên lớn hơn 1 và chỉ có đúng 2 ước dương là 1 và chính nó.\nCho một số nguyên dương ~N~. Hãy kiểm tra xem ~N~ có phải là số nguyên tố hay không.\n\n## Dữ liệu vào\n\n* Một dòng duy nhất chứa số nguyên dương ~N~ (~1 \\le N \\le 10^{12}~).\n\n## Dữ liệu ra\n\n* In ra `YES` nếu ~N~ là số nguyên tố, ngược lại in ra `NO`.\n\n## Ví dụ\n\n### Input 1\n```\n7\n```\n### Output 1\n```\nYES\n```\n\n### Input 2\n```\n12\n```\n### Output 2\n```\nNO\n```\n\n## Gợi ý thuật toán\n\n* Với ~N \\le 10^{12}~, thuật toán kiểm tra ước đến ~\\sqrt{N}~ sẽ chạy trong khoảng ~10^6~ phép toán (dưới 0.05 giây), hoàn toàn đạt điểm tối đa!",
+            "group": 2,
+            "is_manually_managed": false,
+            "is_public": true,
+            "license": null,
+            "memory_limit": 65536,
+            "name": "Kiểm tra số nguyên tố",
+            "og_image": "",
+            "partial": true,
+            "points": 20.0,
+            "short_circuit": false,
+            "summary": "Kiểm tra tính nguyên tố của số nguyên dương N",
+            "testers": [],
+            "time_limit": 1.0,
+            "types": [
+                1, 2
+            ],
+            "user_count": 0
+        }
+    },
+    {
+        "model": "judge.blogpost",
+        "pk": 1,
+        "fields": {
+            "title": "Chào mừng bạn đến với NDOJ - Trường THPT Nguyễn Du, Hà Tĩnh",
+            "slug": "chao-mung-den-voi-ndoj",
+            "visible": true,
+            "global_post": true,
+            "sticky": true,
+            "publish_on": "2026-10-19T00:00:00Z",
+            "content": "## 🎉 Chào mừng các bạn học sinh đến với NDOJ!\n\n**NDOJ (Nguyen Du Online Judge)** là hệ thống kiểm tra và chấm bài lập trình trực tuyến tự động của **Trường THPT Nguyễn Du - Nghi Xuân, Hà Tĩnh**.\n\nHệ thống được xây dựng nhằm hỗ trợ giảng dạy môn Tin học theo **Chương trình Giáo dục phổ thông 2018**, đồng thời là sân chơi bồi dưỡng tư duy thuật toán cho các bạn học sinh yêu thích lập trình và các thành viên **Đội tuyển Học sinh giỏi Tin học** của nhà trường.\n\n### 🚀 Những tính năng nổi bật:\n1. **Chấm bài tự động thời gian thực (Real-time Judging):** Nhận kết quả từng testcase ngay sau khi bấm nút nộp bài qua WebSocket.\n2. **Hỗ trợ đa ngôn ngữ:** C++ (C++17, C++20), Python 3, Free Pascal (FPC), Java.\n3. **Ngân hàng bài tập phong phú:** Phân chia theo khối lớp (Tin học 10, Tin học 11, Tin học 12) và chuyên đề nâng cao (Thuật toán, Quy hoạch động, Đồ thị).\n4. **Tổ chức Kỳ thi (Contest):** Thi kiểm tra thường xuyên, thi giữa kỳ, học kỳ và thi chọn đội tuyển HSG trường.\n5. **Bảng xếp hạng (Rating System):** Vinh danh các bạn học sinh tích cực luyện tập và có thành tích xuất sắc.\n\n### 📌 Bắt đầu như thế nào?\n- Bước 1: [Đăng ký / Đăng nhập](/accounts/login/) vào hệ thống.\n- Bước 2: Xem [Hướng dẫn làm bài và quy định nộp code](/guide/).\n- Bước 3: Thử sức với bài toán đầu tiên: [HELLO_ND - Xin chào THPT Nguyễn Du](/problem/hello_nd)!\n\n*Chúc các bạn học sinh trường THPT Nguyễn Du có những trải nghiệm học tập và rèn luyện lập trình thật say mê và thành công!*",
+            "summary": "Thông báo ra mắt hệ thống chấm bài tự động NDOJ - Trường THPT Nguyễn Du",
+            "og_image": "",
+            "authors": [
+                1
+            ]
+        }
+    },
+    {
+        "model": "sites.site",
+        "pk": 1,
+        "fields": {
+            "domain": "localhost",
+            "name": "NDOJ: Nguyễn Du Online Judge - THPT Nguyễn Du, Hà Tĩnh"
+        }
+    },
+    {
+        "model": "flatpages.flatpage",
+        "pk": 1,
+        "fields": {
+            "url": "/about/",
+            "title": "Giới thiệu Trường THPT Nguyễn Du & NDOJ",
+            "content": "# TRƯỜNG THPT NGUYỄN DU - HÀ TĨNH\n\n* **Địa chỉ:** Thị trấn Tiên Điền, huyện Nghi Xuân, tỉnh Hà Tĩnh\n* **Nền tảng:** NDOJ (Nguyen Du Online Judge)\n* **Đơn vị quản trị:** Tổ Tin học - Trường THPT Nguyễn Du\n\n---\n\n## 1. Giới thiệu nhà trường\n\nTrường THPT Nguyễn Du vinh dự mang tên Đại thi hào dân tộc, Danh nhân văn hóa thế giới Nguyễn Du trên chính quê hương Tiên Điền giàu truyền thống văn hóa và hiếu học của huyện Nghi Xuân, tỉnh Hà Tĩnh.\n\nTrong thời đại cách mạng công nghiệp 4.0 và chuyển đổi số giáo dục, nhà trường luôn chú trọng đổi mới phương pháp dạy học, nâng cao chất lượng dạy và học môn Tin học, bồi dưỡng kỹ năng số và tư duy sáng tạo cho các thế hệ học sinh.\n\n## 2. Mục tiêu của NDOJ\n\n* Tạo môi trường thực hành lập trình thường xuyên cho học sinh các khối 10, 11, 12.\n* Đánh giá chính xác, khách quan năng lực học tập môn Tin học thông qua hệ thống chấm bài chuẩn mực quốc tế.\n* Phát hiện, ươm mầm và bồi dưỡng các nhân tố xuất sắc cho Đội tuyển Học sinh giỏi Tin học nhà trường tham gia các kỳ thi cấp Tỉnh và Quốc gia.",
+            "enable_comments": false,
+            "template_name": "",
+            "registration_required": false,
+            "sites": [
+                1
+            ]
+        }
+    },
+    {
+        "model": "flatpages.flatpage",
+        "pk": 2,
+        "fields": {
+            "url": "/guide/",
+            "title": "Hướng dẫn nộp bài và quy định chấm trên NDOJ",
+            "content": "# CẨM NANG HƯỚNG DẪN NỘP BÀI TRÊN NDOJ\n\n## 1. Các bước làm bài\n\n1. **Chọn bài tập:** Truy cập menu [Bài tập](/problems/) và chọn bài toán phù hợp.\n2. **Đọc kỹ đề bài:** Chú ý các mục **Dữ liệu vào (Input)**, **Dữ liệu ra (Output)**, **Giới hạn thời gian (Time Limit)** và **Giới hạn bộ nhớ (Memory Limit)**.\n3. **Viết code trên máy:** Bạn có thể viết code bằng Code::Blocks, VS Code, Dev-C++, PyCharm, IDLE Python, v.v.\n4. **Nộp bài:** Bấm nút **Nộp bài (Submit)**, chọn ngôn ngữ lập trình tương ứng (ví dụ: `C++17`, `Python 3`), dán mã nguồn vào ô soạn thảo và bấm **Gửi bài**.\n\n---\n\n## 2. Quy tắc Nhập / Xuất (I/O)\n\n* Trên NDOJ, trừ khi đề bài có yêu cầu đọc file cụ thể, mọi bài toán đều đọc từ **Luồng vào chuẩn (Standard Input - stdin)** và in ra **Luồng ra chuẩn (Standard Output - stdout)**.\n* Trong **C++**: Dùng `cin` và `cout` (hoặc `scanf`, `printf`).\n* Trong **Python**: Dùng `input()` và `print()`.\n* Trong **Pascal**: Dùng `readln` và `writeln`.\n* **Lưu ý quan trọng:** Không in ra các câu nhắc thừa như *\"Nhap n: \"* hay *\"Ket qua la: \"*, vì máy chấm sẽ xem đó là sai lệch kết quả.\n\n---\n\n## 3. Ý nghĩa các trạng thái chấm bài\n\n| Ký hiệu | Tên đầy đủ | Ý nghĩa |\n| :---: | :--- | :--- |\n| **AC** | Accepted | Bài làm hoàn toàn chính xác (Đạt 100% điểm). |\n| **WA** | Wrong Answer | Kết quả in ra khác với đáp án chuẩn của bài toán. |\n| **TLE** | Time Limit Exceeded | Chương trình chạy quá thời gian cho phép (thường do vòng lặp vô tận hoặc thuật toán chưa tối ưu). |\n| **MLE** | Memory Limit Exceeded | Chương trình dùng vượt quá bộ nhớ RAM cho phép. |\n| **RTE** | Runtime Error | Lỗi xảy ra khi đang chạy (chia cho 0, truy cập mảng ngoài phạm vi, tràn ngăn xếp đệ quy, v.v.). |\n| **CE** | Compile Error | Mã nguồn không biên dịch được (do lỗi cú pháp). Bạn có thể bấm vào chữ CE để xem chi tiết lỗi. |",
+            "enable_comments": false,
+            "template_name": "",
+            "registration_required": false,
+            "sites": [
+                1
+            ]
+        }
+    },
+    {
+        "model": "flatpages.flatpage",
+        "pk": 3,
+        "fields": {
+            "url": "/custom_checkers/",
+            "title": "Hướng dẫn viết Custom Checker cho giáo viên",
+            "content": "# HƯỚNG DẪN VIẾT CUSTOM CHECKER CHO GIÁO VIÊN\n\nMột số bài tập có thể có nhiều đáp án đúng (ví dụ: tìm một đường đi bất kỳ, in ra các số theo thứ tự tùy ý, hoặc sai số thực cho phép), giáo viên có thể viết Custom Checker bằng Python hoặc C++ để chấm điểm linh hoạt.\n\n## 1. Checker mặc định của NDOJ\n* `standard`: So sánh từng từ/token, bỏ qua khoảng trắng và dòng trống ở cuối.\n* `strict`: So sánh chính xác từng ký tự.\n* `floats`: So sánh số thực với sai số cho phép.\n\n## 2. Custom Checker bằng Python\n```python3\nfrom dmoj.result import CheckerResult\n\ndef check(process_output, judge_output, judge_input, point_value, **kwargs):\n    # Đọc dữ liệu ra từ bài nộp của học sinh\n    out = process_output.decode('utf-8').strip()\n    ans = judge_output.decode('utf-8').strip()\n    \n    if out == ans:\n        return CheckerResult(True, point_value, \"Chính xác\")\n    else:\n        return CheckerResult(False, 0, \"Kết quả chưa khớp\")\n```",
+            "enable_comments": false,
+            "template_name": "",
+            "registration_required": false,
+            "sites": [
+                1
+            ]
+        }
+    }
+]

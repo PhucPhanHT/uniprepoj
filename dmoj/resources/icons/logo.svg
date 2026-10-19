@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 160" width="100%" height="100%">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E3A8A" />
+      <stop offset="50%" stop-color="#2563EB" />
+      <stop offset="100%" stop-color="#0284C7" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E3A8A" />
+      <stop offset="100%" stop-color="#2563EB" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#0F172A" flood-opacity="0.25" />
+    </filter>
+  </defs>
+
+  <!-- Left Icon Emblem: Shield & Academic Pen / Code Brackets -->
+  <g transform="translate(20, 15)" filter="url(#shadow)">
+    <!-- Shield Outer with Gold Border -->
+    <path d="M 65 5 Q 115 15 125 35 Q 125 95 65 125 Q 5 95 5 35 Q 15 15 65 5 Z" 
+          fill="url(#shieldGrad)" stroke="url(#goldGrad)" stroke-width="4" stroke-linejoin="round" />
+    
+    <!-- Code Bracket Left < -->
+    <path d="M 40 50 L 25 65 L 40 80" 
+          fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+
+    <!-- Code Bracket Right > -->
+    <path d="M 90 50 L 105 65 L 90 80" 
+          fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+
+    <!-- Stylized Quill Pen / Feather (Biểu tượng Đại thi hào Nguyễn Du) -->
+    <path d="M 65 30 Q 75 45 75 68 L 65 95 L 55 68 Q 55 45 65 30 Z" 
+          fill="url(#goldGrad)" />
+    <!-- Pen Split Line -->
+    <line x1="65" y1="52" x2="65" y2="88" stroke="#1E3A8A" stroke-width="2.5" stroke-linecap="round" />
+    
+    <!-- Academic Star on Top of Shield -->
+    <polygon points="65,14 68,22 76,23 70,28 72,36 65,31 58,36 60,28 54,23 62,22" 
+             fill="#FEF08A" />
+  </g>
+
+  <!-- Typography: NDOJ & Subtitle -->
+  <g transform="translate(165, 0)">
+    <!-- Acronym: ND -->
+    <text x="0" y="85" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" 
+          font-size="64" font-weight="900" fill="url(#textGrad)" letter-spacing="1">ND</text>
+    
+    <!-- Acronym: OJ with Gold Accent -->
+    <text x="105" y="85" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" 
+          font-size="64" font-weight="900" fill="url(#goldGrad)" letter-spacing="1">OJ</text>
+
+    <!-- Divider Pill -->
+    <rect x="0" y="98" width="335" height="4" rx="2" fill="url(#textGrad)" opacity="0.8" />
+
+    <!-- Subtitle: THPT NGUYỄN DU • HÀ TĨNH -->
+    <text x="2" y="122" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
+          font-size="16" font-weight="800" fill="#1E293B" letter-spacing="2">THPT NGUYỄN DU • HÀ TĨNH</text>
+
+    <!-- Tagline: ONLINE JUDGE PLATFORM -->
+    <text x="2" y="142" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
+          font-size="12" font-weight="600" fill="#64748B" letter-spacing="1.5">HỆ THỐNG CHẤM BÀI TRỰC TUYẾN</text>
+  </g>
+</svg>

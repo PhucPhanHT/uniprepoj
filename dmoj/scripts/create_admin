@@ -1,0 +1,23 @@
+#!/bin/bash
+cd $(dirname $(dirname $0)) || exit
+
+USERNAME=${1:-admin}
+PASSWORD=${2:-admin123456}
+EMAIL=${3:-admin@ndoj.edu.vn}
+
+echo ">> Đang tạo hoặc cập nhật tài khoản Superuser: $USERNAME ..."
+docker compose exec $COMPOSE_EXEC_FLAGS site python3 manage.py shell -c "
+from django.contrib.auth import get_user_model
+User = get_user_model()
+if User.objects.filter(username='$USERNAME').exists():
+    u = User.objects.get(username='$USERNAME')
+    u.set_password('$PASSWORD')
+    u.email = '$EMAIL'
+    u.is_superuser = True
+    u.is_staff = True
+    u.save()
+    print('Đã cập nhật mật khẩu cho tài khoản $USERNAME thành công!')
+else:
+    User.objects.create_superuser('$USERNAME', '$EMAIL', '$PASSWORD')
+    print('Đã tạo thành công tài khoản Superuser: $USERNAME!')
+"

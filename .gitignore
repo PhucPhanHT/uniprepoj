@@ -2,4 +2,5 @@ dmoj/database/
 dmoj/logs/
 dmoj/media/
 dmoj/problems/
+dmoj/backups/
 dmoj/environment/*.env

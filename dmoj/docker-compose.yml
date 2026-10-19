@@ -1,34 +1,35 @@
 version: '3.7'
+
 services:
   db:
-    container_name: vnoj_mysql
-    image: mariadb
+    container_name: ndoj_mysql
+    image: mariadb:10.11
     restart: unless-stopped
     volumes:
       - ./database/:/var/lib/mysql/
     env_file: [environment/mysql.env, environment/mysql-admin.env]
     networks: [db]
-    #ports:
-    #  - 3306:3306
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+
   redis:
-    container_name: vnoj_redis
+    container_name: ndoj_redis
     image: redis:alpine
     restart: unless-stopped
     networks: [site]
-    #ports:
-    #  - 6379:6379
+
   base:
     build:
       context: .
       dockerfile: ./base/Dockerfile
-    image: vnoj/vnoj-base
+    image: ndoj/ndoj-base
     network_mode: none
+
   site:
-    container_name: vnoj_site
+    container_name: ndoj_site
     build:
       context: .
       dockerfile: ./site/Dockerfile
-    image: vnoj/vnoj-site
+    image: ndoj/ndoj-site
     init: true
     restart: unless-stopped
     volumes:
@@ -43,12 +44,13 @@ services:
     env_file: [environment/mysql.env, environment/site.env]
     networks: [site, nginx, db]
     depends_on: [base, db, redis]
+
   celery:
-    container_name: vnoj_celery
+    container_name: ndoj_celery
     build:
       context: .
       dockerfile: ./celery/Dockerfile
-    image: vnoj/vnoj-celery
+    image: ndoj/ndoj-celery
     init: true
     restart: unless-stopped
     volumes:
@@ -59,12 +61,13 @@ services:
     env_file: [environment/mysql.env, environment/site.env]
     networks: [site, db]
     depends_on: [base, db, redis]
+
   bridged:
-    container_name: vnoj_bridged
+    container_name: ndoj_bridged
     build:
       context: .
       dockerfile: ./bridged/Dockerfile
-    image: vnoj/vnoj-bridged
+    image: ndoj/ndoj-bridged
     init: true
     restart: unless-stopped
     volumes:
@@ -75,14 +78,15 @@ services:
     networks: [site, nginx, db]
     depends_on: [base, db, redis]
     ports:
-      - 9998:9998
-      - 9999:9999
+      - "9998:9998"
+      - "9999:9999"
+
   wsevent:
-    container_name: vnoj_wsevent
+    container_name: ndoj_wsevent
     build:
       context: .
       dockerfile: ./wsevent/Dockerfile
-    image: vnoj/vnoj-wsevent
+    image: ndoj/ndoj-wsevent
     init: true
     restart: unless-stopped
     volumes:
@@ -91,16 +95,13 @@ services:
     env_file: [environment/mysql.env, environment/site.env]
     networks: [site, nginx]
     depends_on: [base]
-    #ports:
-    #  - 15100:15100
-    #  - 15101:15101
-    #  - 15102:15102
+
   nginx:
-    container_name: vnoj_nginx
+    container_name: ndoj_nginx
     image: nginx:alpine
     restart: unless-stopped
     ports:
-      - 80:80
+      - "${HTTP_PORT:-80}:80"
     volumes:
       - assets:/assets/
       - userdatacache:/userdatacache/
@@ -110,10 +111,25 @@ services:
       - ./nginx/conf.d/:/etc/nginx/conf.d/
     networks: [nginx]
     depends_on: [site, wsevent]
+
+  judge:
+    container_name: ndoj_judge_1
+    image: dmoj/judge-tier1:latest
+    restart: unless-stopped
+    cap_add:
+      - SYS_PTRACE
+    volumes:
+      - ./problems/:/problems/
+      - ./config/judge.yml:/judge.yml:ro
+    command: run -c /judge.yml bridged ndoj_judge_1 ndoj_secret_judge_key_2026
+    networks: [site]
+    depends_on: [bridged]
+
 networks:
   site:
   db:
   nginx:
+
 volumes:
   assets:
   userdatacache:

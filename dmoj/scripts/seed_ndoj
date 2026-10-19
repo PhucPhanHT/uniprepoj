@@ -1,0 +1,20 @@
+#!/bin/bash
+cd $(dirname $(dirname $0)) || exit
+
+echo ">> Đang nạp fixtures navbar, language và dữ liệu khởi tạo NDOJ..."
+docker compose exec $COMPOSE_EXEC_FLAGS site python3 manage.py loaddata ndoj_navbar
+docker compose exec $COMPOSE_EXEC_FLAGS site python3 manage.py loaddata language_small
+docker compose exec $COMPOSE_EXEC_FLAGS site python3 manage.py loaddata ndoj_fixtures
+
+echo ">> Đang cấu hình máy chấm ndoj_judge_1..."
+docker compose exec $COMPOSE_EXEC_FLAGS site python3 manage.py shell -c "
+from judge.models import Judge
+j, created = Judge.objects.get_or_create(name='ndoj_judge_1', defaults={'auth_key': 'ndoj_secret_judge_key_2026', 'is_blocked': False, 'description': 'Máy chấm tự động Docker NDOJ 01'})
+if not created:
+    j.auth_key = 'ndoj_secret_judge_key_2026'
+    j.is_blocked = False
+    j.save()
+print('Máy chấm ndoj_judge_1 đã được cấu hình thành công!')
+"
+
+echo ">> Khởi tạo dữ liệu NDOJ hoàn tất!"

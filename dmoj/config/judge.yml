@@ -1,0 +1,12 @@
+# Cấu hình máy chấm NDOJ (Trường THPT Nguyễn Du - Hà Tĩnh)
+id: "ndoj_judge_1"
+key: "ndoj_secret_judge_key_2026"
+
+problem_storage_globs:
+  - /problems/*
+
+runtime:
+  g++: /usr/bin/g++
+  gcc: /usr/bin/gcc
+  python3: /usr/bin/python3
+  fpc: /usr/bin/fpc
