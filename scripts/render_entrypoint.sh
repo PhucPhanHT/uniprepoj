@@ -66,3 +66,4 @@ else
     echo ">> Khoi chay Django server..."
     exec python3 manage.py runserver "0.0.0.0:${PORT}" --insecure
 fi
+
