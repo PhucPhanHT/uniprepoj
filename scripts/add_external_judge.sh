@@ -34,9 +34,9 @@ docker run -d \\
   --restart always \\
   --cap-add=SYS_PTRACE \\
   -v /path/to/problems:/problems \\
-  -v /path/to/judge.yml:/judge.yml:ro \\
-  dmoj/judge-tier1:latest \\
-  run -c /judge.yml $SERVER_IP:9999 $JUDGE_NAME $JUDGE_KEY
+  -v /path/to/judge.yml:/judge/judge.yml:ro \\
+  dmoj/judge-small:latest \\
+  $SERVER_IP:9999 $JUDGE_NAME $JUDGE_KEY
 
 5. Đăng ký máy chấm trên trang Admin NDOJ:
    Truy cập: http://$SERVER_IP/admin/judge/judge/add/

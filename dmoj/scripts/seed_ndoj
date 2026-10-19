@@ -8,13 +8,19 @@ docker compose exec $COMPOSE_EXEC_FLAGS site python3 manage.py loaddata ndoj_fix
 
 echo ">> Đang cấu hình máy chấm ndoj_judge_1..."
 docker compose exec $COMPOSE_EXEC_FLAGS site python3 manage.py shell -c "
+import os
 from judge.models import Judge
-j, created = Judge.objects.get_or_create(name='ndoj_judge_1', defaults={'auth_key': 'ndoj_secret_judge_key_2026', 'is_blocked': False, 'description': 'Máy chấm tự động Docker NDOJ 01'})
+judge_name = os.environ.get('JUDGE_NAME', 'ndoj_judge_1')
+judge_key = os.environ.get('JUDGE_KEY', 'ndoj_secret_judge_key_2026')
+j, created = Judge.objects.get_or_create(name=judge_name, defaults={'auth_key': judge_key, 'is_blocked': False, 'description': 'Máy chấm tự động Docker NDOJ 01'})
 if not created:
-    j.auth_key = 'ndoj_secret_judge_key_2026'
+    j.auth_key = judge_key
     j.is_blocked = False
     j.save()
-print('Máy chấm ndoj_judge_1 đã được cấu hình thành công!')
+print(f'Máy chấm {judge_name} đã được cấu hình thành công!')
 "
+
+echo ">> Đang khởi động lại bridged và judge để kích hoạt kết nối..."
+docker compose restart bridged site judge >/dev/null 2>&1 || true
 
 echo ">> Khởi tạo dữ liệu NDOJ hoàn tất!"

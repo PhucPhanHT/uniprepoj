@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 160" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 160" width="100%" height="100%">
   <defs>
     <!-- Gradients -->
     <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -19,50 +19,52 @@
     </filter>
   </defs>
 
-  <!-- Left Icon Emblem: Shield & Academic Pen / Code Brackets -->
-  <g transform="translate(20, 15)" filter="url(#shadow)">
+  <!-- Left Icon Emblem: Shield with Graduation Cap & Code Brackets -->
+  <g transform="translate(15, 15)" filter="url(#shadow)">
     <!-- Shield Outer with Gold Border -->
     <path d="M 65 5 Q 115 15 125 35 Q 125 95 65 125 Q 5 95 5 35 Q 15 15 65 5 Z" 
           fill="url(#shieldGrad)" stroke="url(#goldGrad)" stroke-width="4" stroke-linejoin="round" />
     
     <!-- Code Bracket Left < -->
-    <path d="M 40 50 L 25 65 L 40 80" 
-          fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M 36 68 L 24 78 L 36 88" 
+          fill="none" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
 
     <!-- Code Bracket Right > -->
-    <path d="M 90 50 L 105 65 L 90 80" 
-          fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M 94 68 L 106 78 L 94 88" 
+          fill="none" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
 
-    <!-- Stylized Quill Pen / Feather (Biểu tượng Đại thi hào Nguyễn Du) -->
-    <path d="M 65 30 Q 75 45 75 68 L 65 95 L 55 68 Q 55 45 65 30 Z" 
-          fill="url(#goldGrad)" />
-    <!-- Pen Split Line -->
-    <line x1="65" y1="52" x2="65" y2="88" stroke="#1E3A8A" stroke-width="2.5" stroke-linecap="round" />
-    
-    <!-- Academic Star on Top of Shield -->
-    <polygon points="65,14 68,22 76,23 70,28 72,36 65,31 58,36 60,28 54,23 62,22" 
-             fill="#FEF08A" />
+    <!-- Graduation Cap (Mortarboard) for University Students -->
+    <!-- Cap Diamond Top -->
+    <polygon points="65,30 98,46 65,60 32,46" fill="url(#goldGrad)" />
+    <!-- Cap Under Skullcap -->
+    <path d="M 45 52 L 45 68 Q 65 78 85 68 L 85 52 Q 65 58 45 52 Z" fill="#FFFFFF" opacity="0.9" />
+    <!-- Tassel -->
+    <path d="M 94 48 L 98 66" stroke="#FEF08A" stroke-width="2.5" stroke-linecap="round" />
+    <circle cx="98" cy="68" r="2.5" fill="#FEF08A" />
+
+    <!-- Terminal Prompt / Slash / Star -->
+    <polygon points="65,85 68,91 75,92 70,96 72,103 65,99 58,103 60,96 55,92 62,91" fill="#FEF08A" />
   </g>
 
-  <!-- Typography: NDOJ & Subtitle -->
-  <g transform="translate(165, 0)">
-    <!-- Acronym: ND -->
-    <text x="0" y="85" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" 
-          font-size="64" font-weight="900" fill="url(#textGrad)" letter-spacing="1">ND</text>
+  <!-- Typography: UNIPREP + OJ & Subtitle -->
+  <g transform="translate(160, 0)">
+    <!-- Acronym: UNIPREP -->
+    <text x="0" y="80" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" 
+          font-size="52" font-weight="900" fill="url(#textGrad)" letter-spacing="1.5">UNIPREP</text>
     
     <!-- Acronym: OJ with Gold Accent -->
-    <text x="105" y="85" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" 
-          font-size="64" font-weight="900" fill="url(#goldGrad)" letter-spacing="1">OJ</text>
+    <text x="250" y="80" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" 
+          font-size="52" font-weight="900" fill="url(#goldGrad)" letter-spacing="1.5">OJ</text>
 
     <!-- Divider Pill -->
-    <rect x="0" y="98" width="335" height="4" rx="2" fill="url(#textGrad)" opacity="0.8" />
+    <rect x="0" y="94" width="365" height="4" rx="2" fill="url(#textGrad)" opacity="0.8" />
 
-    <!-- Subtitle: THPT NGUYỄN DU • HÀ TĨNH -->
-    <text x="2" y="122" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
-          font-size="16" font-weight="800" fill="#1E293B" letter-spacing="2">THPT NGUYỄN DU • HÀ TĨNH</text>
+    <!-- Subtitle: TRANG LUYỆN CODE CHO SINH VIÊN -->
+    <text x="2" y="118" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
+          font-size="14.5" font-weight="800" fill="#1E293B" letter-spacing="1.5">TRANG LUYỆN CODE CHO SINH VIÊN</text>
 
     <!-- Tagline: ONLINE JUDGE PLATFORM -->
-    <text x="2" y="142" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
-          font-size="12" font-weight="600" fill="#64748B" letter-spacing="1.5">HỆ THỐNG CHẤM BÀI TRỰC TUYẾN</text>
+    <text x="2" y="138" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
+          font-size="11.5" font-weight="600" fill="#64748B" letter-spacing="1.5">ONLINE JUDGE PLATFORM • UNIPREPOJ</text>
   </g>
 </svg>

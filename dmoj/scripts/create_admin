@@ -2,8 +2,8 @@
 cd $(dirname $(dirname $0)) || exit
 
 USERNAME=${1:-admin}
-PASSWORD=${2:-admin123456}
-EMAIL=${3:-admin@ndoj.edu.vn}
+PASSWORD=${2:-NguyenDu@2026}
+EMAIL=${3:-admin@uniprepoj.com}
 
 echo ">> Đang tạo hoặc cập nhật tài khoản Superuser: $USERNAME ..."
 docker compose exec $COMPOSE_EXEC_FLAGS site python3 manage.py shell -c "

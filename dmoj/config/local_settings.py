@@ -116,7 +116,7 @@ STATICFILES_FINDERS += ('compressor.finders.CompressorFinder',)
 ADMINS = ()
 
 # The sender for the aforementioned emails.
-SERVER_EMAIL = os.environ.get('SERVER_EMAIL', 'NDOJ: Nguyễn Du Online Judge <noreply@ndoj.edu.vn>')
+SERVER_EMAIL = os.environ.get('SERVER_EMAIL', 'UniPrep OJ <noreply@uniprepoj.com>')
 
 
 ################################################
@@ -143,10 +143,10 @@ DMOJ_RESOURCES = '/assets/resources/'
 ############################################
 
 ## DMOJ site display settings.
-SITE_NAME = os.environ.get('SITE_NAME', 'NDOJ')
+SITE_NAME = os.environ.get('SITE_NAME', 'UniPrep OJ')
 SITE_FULL_URL = os.environ.get('SITE_FULL_URL', 'http://localhost/')
-SITE_LONG_NAME = os.environ.get('SITE_LONG_NAME', 'NDOJ: Nguyễn Du Online Judge - THPT Nguyễn Du, Hà Tĩnh')
-SITE_ADMIN_EMAIL = os.environ.get('SITE_ADMIN_EMAIL', 'admin@ndoj.edu.vn')
+SITE_LONG_NAME = os.environ.get('SITE_LONG_NAME', 'UniPrep OJ - Trang luyện code cho sinh viên')
+SITE_ADMIN_EMAIL = os.environ.get('SITE_ADMIN_EMAIL', 'admin@uniprepoj.com')
 TERMS_OF_SERVICE_URL = None
 
 ## Media files settings.
@@ -167,10 +167,13 @@ DMOJ_PROBLEM_DATA_ROOT = '/problems/'
 # The judge connection address and port; where the judges will connect to the site.
 # You should change this to something your judges can actually connect to
 # (e.g., a port that is unused and unblocked by a firewall).
-BRIDGED_JUDGE_ADDRESS = [(os.environ.get('BRIDGED_HOST', 'bridged'), 9999)]
+BRIDGED_JUDGE_ADDRESS = [('0.0.0.0', 9999)]
 
 # The bridged daemon bind address and port to communicate with the site.
-BRIDGED_DJANGO_ADDRESS = [(os.environ.get('BRIDGED_HOST', 'bridged'), 9998)]
+BRIDGED_DJANGO_ADDRESS = [('0.0.0.0', 9998)]
+
+# How the Django site connects to the bridged daemon.
+BRIDGED_DJANGO_CONNECT = (os.environ.get('BRIDGED_HOST', 'bridged'), 9998)
 
 ## DMOJ features.
 # Set to True to enable full-text searching for problems.

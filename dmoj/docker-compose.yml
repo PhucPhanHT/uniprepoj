@@ -1,12 +1,11 @@
-version: '3.7'
-
 services:
   db:
     container_name: ndoj_mysql
     image: mariadb:10.11
     restart: unless-stopped
     volumes:
-      - ./database/:/var/lib/mysql/
+      - dbdata:/var/lib/mysql/
+      - ./backups/:/backups/
     env_file: [environment/mysql.env, environment/mysql-admin.env]
     networks: [db]
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
@@ -29,6 +28,8 @@ services:
     build:
       context: .
       dockerfile: ./site/Dockerfile
+      additional_contexts:
+        - ndoj/ndoj-base=service:base
     image: ndoj/ndoj-site
     init: true
     restart: unless-stopped
@@ -50,6 +51,8 @@ services:
     build:
       context: .
       dockerfile: ./celery/Dockerfile
+      additional_contexts:
+        - ndoj/ndoj-base=service:base
     image: ndoj/ndoj-celery
     init: true
     restart: unless-stopped
@@ -67,6 +70,8 @@ services:
     build:
       context: .
       dockerfile: ./bridged/Dockerfile
+      additional_contexts:
+        - ndoj/ndoj-base=service:base
     image: ndoj/ndoj-bridged
     init: true
     restart: unless-stopped
@@ -114,14 +119,14 @@ services:
 
   judge:
     container_name: ndoj_judge_1
-    image: dmoj/judge-tier1:latest
+    image: dmoj/judge-small:latest
     restart: unless-stopped
     cap_add:
       - SYS_PTRACE
     volumes:
       - ./problems/:/problems/
-      - ./config/judge.yml:/judge.yml:ro
-    command: run -c /judge.yml bridged ndoj_judge_1 ndoj_secret_judge_key_2026
+      - ./config/judge.yml:/judge/judge.yml:ro
+    command: bridged ndoj_judge_1 ndoj_secret_judge_key_2026
     networks: [site]
     depends_on: [bridged]
 
@@ -135,3 +140,4 @@ volumes:
   userdatacache:
   contestdatacache:
   cache:
+  dbdata:

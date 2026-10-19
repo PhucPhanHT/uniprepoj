@@ -1,0 +1,26 @@
+#!/bin/bash
+cd $(dirname $(dirname $0)) || exit
+
+# Kiểm tra và tải submodule repo nếu chưa có
+if [ ! -f "repo/dmoj/settings.py" ]; then
+    echo ">> Chưa tìm thấy mã nguồn trong repo. Đang tải submodule..."
+    git submodule update --init --recursive
+fi
+
+mkdir -p problems media database backups
+
+
+cp config/config.js repo/websocket/
+cp config/local_settings.py repo/dmoj/
+cp config/uwsgi.ini repo/
+cp config/judge.yml problems/
+
+# Copy fixtures và branding NDOJ vào repo
+mkdir -p repo/judge/fixtures repo/resources/icons
+cp -r fixtures/* repo/judge/fixtures/ 2>/dev/null || true
+cp -r resources/* repo/resources/ 2>/dev/null || true
+
+# Copy các bài tập mẫu khởi tạo vào thư mục problems
+cp -r sample_problems/* problems/ 2>/dev/null || true
+
+echo "Khởi tạo thư mục và cấu hình NDOJ hoàn tất."

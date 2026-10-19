@@ -1,4 +1,4 @@
-FROM vnoj/vnoj-base:latest
+FROM ndoj/ndoj-base
 
 EXPOSE 9999
 EXPOSE 9998

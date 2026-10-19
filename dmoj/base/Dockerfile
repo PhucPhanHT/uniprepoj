@@ -1,4 +1,4 @@
-FROM python:3.11-slim-bullseye
+FROM python:3.11-slim-bookworm
 
 RUN apt-get update && \
     apt-get install -y \
@@ -12,10 +12,18 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /
-COPY repo/requirements.txt .
-COPY repo/additional_requirements.txt .
 COPY repo/package.json .
 COPY repo/package-lock.json .
-RUN npm install && \
-    pip3 install -r requirements.txt && \
-    pip3 install -r additional_requirements.txt
+RUN npm install
+
+COPY repo/requirements.txt .
+RUN printf "nameserver 8.8.8.8\nnameserver 1.1.1.1\n" > /etc/resolv.conf 2>/dev/null || true; \
+    pip3 install --no-cache-dir "setuptools<70" "wheel" && \
+    pip3 install --no-cache-dir -r requirements.txt
+
+COPY repo/additional_requirements.txt .
+RUN printf "nameserver 8.8.8.8\nnameserver 1.1.1.1\n" > /etc/resolv.conf 2>/dev/null || true; \
+    pip3 install --no-cache-dir -r additional_requirements.txt
+
+ENV PATH="/node_modules/.bin:${PATH}"
+

@@ -3,7 +3,7 @@
         "model": "judge.profile",
         "pk": 1,
         "fields": {
-            "about": "Tài khoản Quản trị viên hệ thống NDOJ - Trường THPT Nguyễn Du, Hà Tĩnh.",
+            "about": "Tài khoản Quản trị viên hệ thống UniPrep OJ - Trang luyện code cho sinh viên.",
             "ace_theme": "github",
             "current_contest": null,
             "display_rank": "admin",
@@ -29,15 +29,15 @@
         "pk": 1,
         "fields": {
             "date_joined": "2026-10-19T00:00:00Z",
-            "email": "admin@ndoj.edu.vn",
+            "email": "admin@uniprepoj.com",
             "first_name": "Admin",
             "groups": [],
             "is_active": true,
             "is_staff": true,
             "is_superuser": true,
             "last_login": "2026-10-19T00:00:00Z",
-            "last_name": "NDOJ",
-            "password": "pbkdf2_sha256$36000$eFRRZq4DgktS$md1gk0bBJb7PH/+3YEXkcCW8K+KmiI+y/amqR32G2DY=",
+            "last_name": "UniPrep OJ",
+            "password": "pbkdf2_sha256$36000$eFRRZq4DgktS$ITUsopKCaALHuCXEo4iZkgKuVNu4K5kezdXTT7TEWsA=",
             "user_permissions": [],
             "username": "admin"
         }
@@ -46,16 +46,16 @@
         "model": "judge.organization",
         "pk": 1,
         "fields": {
-            "about": "Trường THPT Nguyễn Du - Huyện Nghi Xuân, Tỉnh Hà Tĩnh. Ngôi trường mang tên Đại thi hào dân tộc Nguyễn Du trên mảnh đất Tiên Điền giàu truyền thống hiếu học.",
+            "about": "UniPrep OJ - Nền tảng học tập, rèn luyện tư duy thuật toán và kỹ năng lập trình chuyên nghiệp dành cho sinh viên các trường đại học, cao đẳng trên toàn quốc.",
             "access_code": null,
             "admins": [
                 1
             ],
             "creation_date": "2026-10-19T00:00:00Z",
             "is_open": true,
-            "slug": "thpt-nguyen-du",
-            "name": "Trường THPT Nguyễn Du - Hà Tĩnh",
-            "short_name": "THPT Nguyễn Du",
+            "slug": "uniprep-oj",
+            "name": "UniPrep OJ - Trang luyện code cho sinh viên",
+            "short_name": "UniPrep OJ",
             "slots": null
         }
     },
@@ -63,15 +63,15 @@
         "model": "judge.problemtype",
         "pk": 1,
         "fields": {
-            "name": "coban",
-            "full_name": "Lập trình cơ bản"
+            "name": "nhap-mon",
+            "full_name": "Nhập môn lập trình (CS101)"
         }
     },
     {
         "model": "judge.problemtype",
         "pk": 2,
         "fields": {
-            "name": "thuat-toan",
+            "name": "ctdl-gt",
             "full_name": "Cấu trúc dữ liệu & Thuật toán"
         }
     },
@@ -80,47 +80,47 @@
         "pk": 3,
         "fields": {
             "name": "quy-hoach-dong",
-            "full_name": "Quy hoạch động"
+            "full_name": "Quy hoạch động & Kỹ thuật tối ưu"
         }
     },
     {
         "model": "judge.problemtype",
         "pk": 4,
         "fields": {
-            "name": "hsg",
-            "full_name": "Luyện thi Học sinh giỏi"
+            "name": "olympic-icpc",
+            "full_name": "Luyện thi Olympic Sinh viên & ICPC"
         }
     },
     {
         "model": "judge.problemgroup",
         "pk": 1,
         "fields": {
-            "name": "tin-10",
-            "full_name": "Tin học 10 (GDPT 2018)"
+            "name": "lap-trinh-co-ban",
+            "full_name": "Lập trình cơ bản (C/C++, Python)"
         }
     },
     {
         "model": "judge.problemgroup",
         "pk": 2,
         "fields": {
-            "name": "tin-11",
-            "full_name": "Tin học 11 (GDPT 2018)"
+            "name": "ctdl-giai-thuat",
+            "full_name": "Cấu trúc dữ liệu & Giải thuật"
         }
     },
     {
         "model": "judge.problemgroup",
         "pk": 3,
         "fields": {
-            "name": "tin-12",
-            "full_name": "Tin học 12 (GDPT 2018)"
+            "name": "thiet-ke-thuat-toan",
+            "full_name": "Quy hoạch động & Kỹ thuật nâng cao"
         }
     },
     {
         "model": "judge.problemgroup",
         "pk": 4,
         "fields": {
-            "name": "doi-tuyen-hsg",
-            "full_name": "Đội tuyển HSG Tin học"
+            "name": "olympic-sinh-vien",
+            "full_name": "Olympic Tin học Sinh viên & ICPC"
         }
     },
     {
@@ -128,11 +128,12 @@
         "pk": 1,
         "fields": {
             "name": "ndoj_judge_1",
+            "created": "2026-10-19T00:00:00Z",
             "auth_key": "ndoj_secret_judge_key_2026",
             "is_blocked": false,
             "is_disabled": false,
             "online": false,
-            "description": "Máy chấm tự động Docker NDOJ (Trường THPT Nguyễn Du - Hà Tĩnh)"
+            "description": "Máy chấm tự động Docker UniPrep OJ 01"
         }
     },
     {
@@ -147,21 +148,21 @@
                 1
             ],
             "banned_users": [],
-            "code": "hello_nd",
+            "code": "hello_uniprep",
             "curators": [],
             "date": "2026-10-19T00:00:00Z",
-            "description": "# Xin chào THPT Nguyễn Du!\n\nChào mừng bạn đến với hệ thống chấm bài tự động **NDOJ (Nguyen Du Online Judge)** - Trường THPT Nguyễn Du, Nghi Xuân, Hà Tĩnh!\n\nNhiệm vụ đầu tiên của bạn là viết một chương trình đơn giản: In ra lời chào tới trường THPT Nguyễn Du thân yêu.\n\n## Yêu cầu đề bài\n\nChương trình không cần đọc dữ liệu đầu vào. Hãy in ra màn hình chính xác dòng chữ:\n\n```\nXin chao THPT Nguyen Du - Ha Tinh!\n```\n\n## Dữ liệu vào\n\n* Không có dữ liệu vào.\n\n## Dữ liệu ra\n\n* In ra một dòng duy nhất: `Xin chao THPT Nguyen Du - Ha Tinh!`\n\n## Ví dụ\n\n### Output mẫu\n```\nXin chao THPT Nguyen Du - Ha Tinh!\n```\n\n## Hướng dẫn bằng C++\n```cpp\n#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << \"Xin chao THPT Nguyen Du - Ha Tinh!\" << endl;\n    return 0;\n}\n```\n\n## Hướng dẫn bằng Python\n```python\nprint(\"Xin chao THPT Nguyen Du - Ha Tinh!\")\n```",
+            "description": "# Xin chào UniPrep OJ!\n\nChào mừng bạn đến với hệ thống chấm bài tự động **UniPrep OJ** - Trang luyện code cho sinh viên!\n\nNhiệm vụ khởi động của bạn là viết một chương trình đơn giản: In ra màn hình dòng chữ chào mừng nền tảng UniPrep OJ.\n\n## Yêu cầu đề bài\n\nChương trình không đọc dữ liệu từ bàn phím. Hãy in ra màn hình chính xác dòng chữ:\n\n```\nXin chao UniPrep OJ!\n```\n\n## Dữ liệu vào\n\n* Không có dữ liệu vào.\n\n## Dữ liệu ra\n\n* In ra một dòng duy nhất: `Xin chao UniPrep OJ!`\n\n## Ví dụ\n\n### Output mẫu\n```\nXin chao UniPrep OJ!\n```\n\n## Hướng dẫn bằng C++\n```cpp\n#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << \"Xin chao UniPrep OJ!\" << endl;\n    return 0;\n}\n```\n\n## Hướng dẫn bằng Python\n```python\nprint(\"Xin chao UniPrep OJ!\")\n```",
             "group": 1,
             "is_manually_managed": false,
             "is_public": true,
             "license": null,
             "memory_limit": 65536,
-            "name": "Xin chào THPT Nguyễn Du",
+            "name": "Xin chào UniPrep OJ",
             "og_image": "",
             "partial": false,
             "points": 10.0,
             "short_circuit": false,
-            "summary": "Bài tập làm quen thao tác nộp bài đầu tiên trên NDOJ",
+            "summary": "Bài tập khởi động làm quen thao tác nộp bài trên UniPrep OJ",
             "testers": [],
             "time_limit": 1.0,
             "types": [
@@ -196,7 +197,7 @@
             "partial": true,
             "points": 10.0,
             "short_circuit": false,
-            "summary": "Tính tổng hai số nguyên cho học sinh làm quen đọc dữ liệu",
+            "summary": "Bài tập tính tổng hai số nguyên cho sinh viên làm quen nhập xuất chuẩn",
             "testers": [],
             "time_limit": 1.0,
             "types": [
@@ -231,7 +232,7 @@
             "partial": true,
             "points": 20.0,
             "short_circuit": false,
-            "summary": "Kiểm tra tính nguyên tố của số nguyên dương N",
+            "summary": "Thuật toán kiểm tra tính nguyên tố tối ưu O(sqrt(N)) cho sinh viên",
             "testers": [],
             "time_limit": 1.0,
             "types": [
@@ -244,14 +245,14 @@
         "model": "judge.blogpost",
         "pk": 1,
         "fields": {
-            "title": "Chào mừng bạn đến với NDOJ - Trường THPT Nguyễn Du, Hà Tĩnh",
-            "slug": "chao-mung-den-voi-ndoj",
+            "title": "Chào mừng bạn đến với UniPrep OJ - Trang luyện code cho sinh viên",
+            "slug": "chao-mung-den-voi-uniprep-oj",
             "visible": true,
             "global_post": true,
             "sticky": true,
             "publish_on": "2026-10-19T00:00:00Z",
-            "content": "## 🎉 Chào mừng các bạn học sinh đến với NDOJ!\n\n**NDOJ (Nguyen Du Online Judge)** là hệ thống kiểm tra và chấm bài lập trình trực tuyến tự động của **Trường THPT Nguyễn Du - Nghi Xuân, Hà Tĩnh**.\n\nHệ thống được xây dựng nhằm hỗ trợ giảng dạy môn Tin học theo **Chương trình Giáo dục phổ thông 2018**, đồng thời là sân chơi bồi dưỡng tư duy thuật toán cho các bạn học sinh yêu thích lập trình và các thành viên **Đội tuyển Học sinh giỏi Tin học** của nhà trường.\n\n### 🚀 Những tính năng nổi bật:\n1. **Chấm bài tự động thời gian thực (Real-time Judging):** Nhận kết quả từng testcase ngay sau khi bấm nút nộp bài qua WebSocket.\n2. **Hỗ trợ đa ngôn ngữ:** C++ (C++17, C++20), Python 3, Free Pascal (FPC), Java.\n3. **Ngân hàng bài tập phong phú:** Phân chia theo khối lớp (Tin học 10, Tin học 11, Tin học 12) và chuyên đề nâng cao (Thuật toán, Quy hoạch động, Đồ thị).\n4. **Tổ chức Kỳ thi (Contest):** Thi kiểm tra thường xuyên, thi giữa kỳ, học kỳ và thi chọn đội tuyển HSG trường.\n5. **Bảng xếp hạng (Rating System):** Vinh danh các bạn học sinh tích cực luyện tập và có thành tích xuất sắc.\n\n### 📌 Bắt đầu như thế nào?\n- Bước 1: [Đăng ký / Đăng nhập](/accounts/login/) vào hệ thống.\n- Bước 2: Xem [Hướng dẫn làm bài và quy định nộp code](/guide/).\n- Bước 3: Thử sức với bài toán đầu tiên: [HELLO_ND - Xin chào THPT Nguyễn Du](/problem/hello_nd)!\n\n*Chúc các bạn học sinh trường THPT Nguyễn Du có những trải nghiệm học tập và rèn luyện lập trình thật say mê và thành công!*",
-            "summary": "Thông báo ra mắt hệ thống chấm bài tự động NDOJ - Trường THPT Nguyễn Du",
+            "content": "## 🎉 Chào mừng các bạn sinh viên đến với UniPrep OJ!\n\n**UniPrep OJ** là nền tảng kiểm tra và chấm bài lập trình trực tuyến tự động dành cho sinh viên đam mê công nghệ thông tin và khoa học máy tính.\n\n### 🚀 Những tính năng nổi bật:\n1. **Chấm bài tự động thời gian thực (Real-time Judging):** Nhận kết quả từng testcase ngay sau khi bấm nút nộp bài qua WebSocket.\n2. **Hỗ trợ đa ngôn ngữ phổ biến:** C, C++ (C++17, C++20), Python 3, Java, Free Pascal.\n3. **Ngân hàng bài tập phong phú:** Nhập môn lập trình, Cấu trúc dữ liệu & Giải thuật, OOP, Luyện thi Olympic Tin học Sinh viên và ICPC.\n4. **Tổ chức Kỳ thi (Contest):** Luyện thi theo tuần, kiểm tra định kỳ và thi đấu xếp hạng.\n5. **Bảng xếp hạng (Rating System):** Cạnh tranh công bằng, ghi nhận thành tích rèn luyện của sinh viên.\n\n### 📌 Bắt đầu ngay hôm nay:\n- Bước 1: [Đăng ký / Đăng nhập](/accounts/login/) vào hệ thống.\n- Bước 2: Xem [Hướng dẫn làm bài và quy định nộp code](/guide/).\n- Bước 3: Thử sức với bài toán đầu tiên: [HELLO_UNIPREP - Xin chào UniPrep OJ](/problem/hello_uniprep)!\n\n*Chúc các bạn sinh viên có những trải nghiệm học tập và rèn luyện kỹ năng code thật hiệu quả và bứt phá!*",
+            "summary": "Thông báo ra mắt nền tảng UniPrep OJ - Trang luyện code cho sinh viên",
             "og_image": "",
             "authors": [
                 1
@@ -263,7 +264,7 @@
         "pk": 1,
         "fields": {
             "domain": "localhost",
-            "name": "NDOJ: Nguyễn Du Online Judge - THPT Nguyễn Du, Hà Tĩnh"
+            "name": "UniPrep OJ - Luyện code sinh viên"
         }
     },
     {
@@ -271,8 +272,8 @@
         "pk": 1,
         "fields": {
             "url": "/about/",
-            "title": "Giới thiệu Trường THPT Nguyễn Du & NDOJ",
-            "content": "# TRƯỜNG THPT NGUYỄN DU - HÀ TĨNH\n\n* **Địa chỉ:** Thị trấn Tiên Điền, huyện Nghi Xuân, tỉnh Hà Tĩnh\n* **Nền tảng:** NDOJ (Nguyen Du Online Judge)\n* **Đơn vị quản trị:** Tổ Tin học - Trường THPT Nguyễn Du\n\n---\n\n## 1. Giới thiệu nhà trường\n\nTrường THPT Nguyễn Du vinh dự mang tên Đại thi hào dân tộc, Danh nhân văn hóa thế giới Nguyễn Du trên chính quê hương Tiên Điền giàu truyền thống văn hóa và hiếu học của huyện Nghi Xuân, tỉnh Hà Tĩnh.\n\nTrong thời đại cách mạng công nghiệp 4.0 và chuyển đổi số giáo dục, nhà trường luôn chú trọng đổi mới phương pháp dạy học, nâng cao chất lượng dạy và học môn Tin học, bồi dưỡng kỹ năng số và tư duy sáng tạo cho các thế hệ học sinh.\n\n## 2. Mục tiêu của NDOJ\n\n* Tạo môi trường thực hành lập trình thường xuyên cho học sinh các khối 10, 11, 12.\n* Đánh giá chính xác, khách quan năng lực học tập môn Tin học thông qua hệ thống chấm bài chuẩn mực quốc tế.\n* Phát hiện, ươm mầm và bồi dưỡng các nhân tố xuất sắc cho Đội tuyển Học sinh giỏi Tin học nhà trường tham gia các kỳ thi cấp Tỉnh và Quốc gia.",
+            "title": "Giới thiệu UniPrep OJ - Trang luyện code cho sinh viên",
+            "content": "# UNIPREP OJ - TRANG LUYỆN CODE CHO SINH VIÊN\n\n* **Nền tảng:** UniPrep OJ (Online Judge Platform)\n* **Sứ mệnh:** Xây dựng môi trường rèn luyện tư duy thuật toán, kỹ năng lập trình và giải quyết bài toán thực tế cho sinh viên.\n\n---\n\n## 1. Giới thiệu nền tảng\n\nUniPrep OJ là hệ thống chấm bài tự động hiện đại, được thiết kế chuyên biệt để đồng hành cùng các bạn sinh viên trong suốt lộ trình học tập từ các môn cơ sở ngành (Nhập môn lập trình, Kỹ thuật lập trình) đến các môn chuyên sâu (Cấu trúc dữ liệu & Giải thuật, Phân tích thiết kế giải thuật).\n\n## 2. Mục tiêu của UniPrep OJ\n\n* **Thực hành liên tục:** Cung cấp hàng trăm bài tập bám sát chương trình đào tạo của các trường Đại học Công nghệ thông tin.\n* **Chấm điểm minh bạch, khách quan:** Kiểm tra nghiêm ngặt về giới hạn thời gian (Time Limit), bộ nhớ (Memory Limit) và các trường hợp biên (Edge Cases).\n* **Bệ phóng tài năng:** Chuẩn bị hành trang cho sinh viên tham dự các kỳ thi lập trình đỉnh cao như Olympic Tin học Sinh viên Việt Nam, kỳ thi quốc tế ICPC và phỏng vấn kỹ thuật tại các tập đoàn công nghệ lớn.",
             "enable_comments": false,
             "template_name": "",
             "registration_required": false,
@@ -286,8 +287,8 @@
         "pk": 2,
         "fields": {
             "url": "/guide/",
-            "title": "Hướng dẫn nộp bài và quy định chấm trên NDOJ",
-            "content": "# CẨM NANG HƯỚNG DẪN NỘP BÀI TRÊN NDOJ\n\n## 1. Các bước làm bài\n\n1. **Chọn bài tập:** Truy cập menu [Bài tập](/problems/) và chọn bài toán phù hợp.\n2. **Đọc kỹ đề bài:** Chú ý các mục **Dữ liệu vào (Input)**, **Dữ liệu ra (Output)**, **Giới hạn thời gian (Time Limit)** và **Giới hạn bộ nhớ (Memory Limit)**.\n3. **Viết code trên máy:** Bạn có thể viết code bằng Code::Blocks, VS Code, Dev-C++, PyCharm, IDLE Python, v.v.\n4. **Nộp bài:** Bấm nút **Nộp bài (Submit)**, chọn ngôn ngữ lập trình tương ứng (ví dụ: `C++17`, `Python 3`), dán mã nguồn vào ô soạn thảo và bấm **Gửi bài**.\n\n---\n\n## 2. Quy tắc Nhập / Xuất (I/O)\n\n* Trên NDOJ, trừ khi đề bài có yêu cầu đọc file cụ thể, mọi bài toán đều đọc từ **Luồng vào chuẩn (Standard Input - stdin)** và in ra **Luồng ra chuẩn (Standard Output - stdout)**.\n* Trong **C++**: Dùng `cin` và `cout` (hoặc `scanf`, `printf`).\n* Trong **Python**: Dùng `input()` và `print()`.\n* Trong **Pascal**: Dùng `readln` và `writeln`.\n* **Lưu ý quan trọng:** Không in ra các câu nhắc thừa như *\"Nhap n: \"* hay *\"Ket qua la: \"*, vì máy chấm sẽ xem đó là sai lệch kết quả.\n\n---\n\n## 3. Ý nghĩa các trạng thái chấm bài\n\n| Ký hiệu | Tên đầy đủ | Ý nghĩa |\n| :---: | :--- | :--- |\n| **AC** | Accepted | Bài làm hoàn toàn chính xác (Đạt 100% điểm). |\n| **WA** | Wrong Answer | Kết quả in ra khác với đáp án chuẩn của bài toán. |\n| **TLE** | Time Limit Exceeded | Chương trình chạy quá thời gian cho phép (thường do vòng lặp vô tận hoặc thuật toán chưa tối ưu). |\n| **MLE** | Memory Limit Exceeded | Chương trình dùng vượt quá bộ nhớ RAM cho phép. |\n| **RTE** | Runtime Error | Lỗi xảy ra khi đang chạy (chia cho 0, truy cập mảng ngoài phạm vi, tràn ngăn xếp đệ quy, v.v.). |\n| **CE** | Compile Error | Mã nguồn không biên dịch được (do lỗi cú pháp). Bạn có thể bấm vào chữ CE để xem chi tiết lỗi. |",
+            "title": "Hướng dẫn nộp bài và quy định chấm trên UniPrep OJ",
+            "content": "# CẨM NANG HƯỚNG DẪN NỘP BÀI TRÊN UNIPREP OJ\n\n## 1. Các bước làm bài\n\n1. **Chọn bài tập:** Truy cập menu [Bài tập](/problems/) và chọn bài toán phù hợp.\n2. **Đọc kỹ đề bài:** Chú ý các mục **Dữ liệu vào (Input)**, **Dữ liệu ra (Output)**, **Giới hạn thời gian (Time Limit)** và **Giới hạn bộ nhớ (Memory Limit)**.\n3. **Viết code trên máy:** Bạn có thể viết code bằng VS Code, CLion, Code::Blocks, PyCharm, v.v.\n4. **Nộp bài:** Bấm nút **Nộp bài (Submit)**, chọn ngôn ngữ lập trình tương ứng (ví dụ: `C++17`, `Python 3`), dán mã nguồn vào ô soạn thảo và bấm **Gửi bài**.\n\n---\n\n## 2. Quy tắc Nhập / Xuất (I/O)\n\n* Trên UniPrep OJ, trừ khi đề bài có yêu cầu đọc file cụ thể, mọi bài toán đều đọc từ **Luồng vào chuẩn (Standard Input - stdin)** và in ra **Luồng ra chuẩn (Standard Output - stdout)**.\n* Trong **C++**: Dùng `cin` và `cout` (hoặc `scanf`, `printf`). Lưu ý dùng `ios_base::sync_with_stdio(false); cin.tie(NULL);` để tối ưu tốc độ I/O.\n* Trong **Python**: Dùng `input()` và `print()` (hoặc `sys.stdin.readline` cho dữ liệu lớn).\n* Trong **Java**: Dùng `Scanner` hoặc `BufferedReader` (lớp chính đặt tên `Main` hoặc theo quy định).\n* **Lưu ý quan trọng:** Không in ra các câu nhắc thừa như *\"Nhap n: \"* hay *\"Ket qua la: \"*, vì máy chấm sẽ xem đó là sai lệch kết quả.\n\n---\n\n## 3. Ý nghĩa các trạng thái chấm bài\n\n| Ký hiệu | Tên đầy đủ | Ý nghĩa |\n| :---: | :--- | :--- |\n| **AC** | Accepted | Bài làm hoàn toàn chính xác (Đạt 100% điểm). |\n| **WA** | Wrong Answer | Kết quả in ra khác với đáp án chuẩn của bài toán. |\n| **TLE** | Time Limit Exceeded | Chương trình chạy quá thời gian cho phép (thường do vòng lặp vô tận hoặc thuật toán chưa tối ưu). |\n| **MLE** | Memory Limit Exceeded | Chương trình dùng vượt quá bộ nhớ RAM cho phép. |\n| **RTE** | Runtime Error | Lỗi xảy ra khi đang chạy (chia cho 0, truy cập mảng ngoài phạm vi, tràn ngăn xếp đệ quy, v.v.). |\n| **CE** | Compile Error | Mã nguồn không biên dịch được (do lỗi cú pháp). Bạn có thể bấm vào chữ CE để xem chi tiết lỗi. |",
             "enable_comments": false,
             "template_name": "",
             "registration_required": false,
@@ -301,8 +302,8 @@
         "pk": 3,
         "fields": {
             "url": "/custom_checkers/",
-            "title": "Hướng dẫn viết Custom Checker cho giáo viên",
-            "content": "# HƯỚNG DẪN VIẾT CUSTOM CHECKER CHO GIÁO VIÊN\n\nMột số bài tập có thể có nhiều đáp án đúng (ví dụ: tìm một đường đi bất kỳ, in ra các số theo thứ tự tùy ý, hoặc sai số thực cho phép), giáo viên có thể viết Custom Checker bằng Python hoặc C++ để chấm điểm linh hoạt.\n\n## 1. Checker mặc định của NDOJ\n* `standard`: So sánh từng từ/token, bỏ qua khoảng trắng và dòng trống ở cuối.\n* `strict`: So sánh chính xác từng ký tự.\n* `floats`: So sánh số thực với sai số cho phép.\n\n## 2. Custom Checker bằng Python\n```python3\nfrom dmoj.result import CheckerResult\n\ndef check(process_output, judge_output, judge_input, point_value, **kwargs):\n    # Đọc dữ liệu ra từ bài nộp của học sinh\n    out = process_output.decode('utf-8').strip()\n    ans = judge_output.decode('utf-8').strip()\n    \n    if out == ans:\n        return CheckerResult(True, point_value, \"Chính xác\")\n    else:\n        return CheckerResult(False, 0, \"Kết quả chưa khớp\")\n```",
+            "title": "Hướng dẫn viết Custom Checker trên UniPrep OJ",
+            "content": "# HƯỚNG DẪN VIẾT CUSTOM CHECKER TRÊN UNIPREP OJ\n\nMột số bài tập có thể có nhiều đáp án đúng (ví dụ: tìm một đường đi bất kỳ, in ra các số theo thứ tự tùy ý, hoặc sai số thực cho phép), người tạo đề có thể viết Custom Checker bằng Python hoặc C++ để chấm điểm linh hoạt.\n\n## 1. Checker mặc định của UniPrep OJ\n* `standard`: So sánh từng từ/token, bỏ qua khoảng trắng và dòng trống ở cuối.\n* `strict`: So sánh chính xác từng ký tự.\n* `floats`: So sánh số thực với sai số cho phép.\n\n## 2. Custom Checker bằng Python\n```python3\nfrom dmoj.result import CheckerResult\n\ndef check(process_output, judge_output, judge_input, point_value, **kwargs):\n    # Đọc dữ liệu ra từ bài nộp của sinh viên\n    out = process_output.decode('utf-8').strip()\n    ans = judge_output.decode('utf-8').strip()\n    \n    if out == ans:\n        return CheckerResult(True, point_value, \"Chính xác\")\n    else:\n        return CheckerResult(False, 0, \"Kết quả chưa khớp\")\n```",
             "enable_comments": false,
             "template_name": "",
             "registration_required": false,
