@@ -16,7 +16,7 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         git gcc g++ make curl gettext wget \
         libxml2-dev libxslt1-dev zlib1g-dev \
-        mariadb-client libmariadb-dev \
+        mariadb-client libmariadb-dev libpq-dev \
         libjpeg-dev debconf-utils pkg-config ca-certificates && \
     curl -sL https://deb.nodesource.com/setup_18.x | bash - && \
     apt-get install -y --no-install-recommends nodejs && \
@@ -51,7 +51,7 @@ WORKDIR /app/dmoj/repo
 RUN pip3 install --no-cache-dir "setuptools<70" "wheel" && \
     pip3 install --no-cache-dir -r requirements.txt && \
     pip3 install --no-cache-dir -r additional_requirements.txt && \
-    pip3 install --no-cache-dir requests pyyaml whitenoise gunicorn
+    pip3 install --no-cache-dir requests pyyaml whitenoise gunicorn psycopg2-binary dj-database-url
 
 # 6. Sao chép các cấu hình, fixtures, Piston judge và bài tập mẫu
 WORKDIR /app

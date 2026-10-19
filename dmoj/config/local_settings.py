@@ -47,9 +47,45 @@ else:
         }
     }
 
-# Your database credentials. MySQL in production/compose, SQLite fallback for single-container cloud deploy.
-# Documentation: <https://docs.djangoproject.com/en/3.2/ref/databases/>
-if os.environ.get('MYSQL_HOST'):
+# Your database credentials.
+# Supports DATABASE_URL (Render / Supabase / Neon / Heroku PostgreSQL or MySQL),
+# MYSQL_HOST (MariaDB on Docker Compose/VPS), or SQLite fallback.
+database_url = os.environ.get('DATABASE_URL')
+if database_url:
+    try:
+        import dj_database_url
+        DATABASES = {
+            'default': dj_database_url.config(
+                default=database_url,
+                conn_max_age=600,
+                ssl_require=False
+            )
+        }
+    except Exception:
+        import urllib.parse
+        parsed = urllib.parse.urlparse(database_url)
+        scheme = parsed.scheme.split('+')[0]
+        if scheme in ('postgres', 'postgresql'):
+            engine = 'django.db.backends.postgresql'
+            default_port = '5432'
+        elif scheme in ('mysql', 'mariadb'):
+            engine = 'django.db.backends.mysql'
+            default_port = '3306'
+        else:
+            engine = 'django.db.backends.sqlite3'
+            default_port = ''
+
+        DATABASES = {
+            'default': {
+                'ENGINE': engine,
+                'NAME': parsed.path.lstrip('/'),
+                'USER': parsed.username or '',
+                'PASSWORD': parsed.password or '',
+                'HOST': parsed.hostname or '',
+                'PORT': str(parsed.port or default_port),
+            }
+        }
+elif os.environ.get('MYSQL_HOST'):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
