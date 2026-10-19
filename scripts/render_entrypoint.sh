@@ -17,15 +17,29 @@ cd /app/dmoj/repo
 
 # 1. Chạy migrations cho database (PostgreSQL/MySQL hoặc SQLite fallback)
 echo ">> [1/4] Dang thuc thi database migrations..."
-if ! python3 manage.py migrate --noinput; then
-    echo "=========================================================="
-    echo ">> [CANH BAO] Khong the ket noi toi DATABASE_URL hien tai!"
-    echo ">> Nguyen nhan: Supabase Direct URL su dung dia chi IPv6 (Render free khong ho tro IPv6 outbound)."
-    echo ">> Giai phap: Hay lay Connection Pooler URL tu Supabase (host aws-0-*.pooler.supabase.com cong 6543) hoac dung Render PostgreSQL."
-    echo ">> He thong tu dong chuyen sang SQLite noi bo de Web van khoi dong Live thanh cong!"
-    echo "=========================================================="
-    export DATABASE_URL=""
+MIGRATE_SUCCESS=0
+
+if [ -n "$DATABASE_URL" ]; then
+    echo ">> Phat hien DATABASE_URL. Dang thuc hien migrate tren database remote..."
+    if python3 manage.py migrate --noinput; then
+        echo ">> [OK] Migrations tren DATABASE_URL thanh cong!"
+        MIGRATE_SUCCESS=1
+    else
+        echo "=========================================================="
+        echo ">> [CANH BAO] Khong the migrate tren DATABASE_URL!"
+        echo ">> Neu su dung Supabase: Render free khong ho tro IPv6 outbound cho Direct Host (db.*.supabase.co)."
+        echo ">> GIAI PHAP: Lay URI 'Session Pooler' tu Supabase (host aws-0-*.pooler.supabase.com port 5432 hoac 6543) hoac dung Render PostgreSQL."
+        echo ">> He thong tu dong chuyen sang SQLite de Web van hoat dong LIVE ngay lap tuc..."
+        echo "=========================================================="
+        export DATABASE_URL=""
+        unset DATABASE_URL
+    fi
+fi
+
+if [ "$MIGRATE_SUCCESS" -eq 0 ]; then
+    echo ">> Dang thuc hien database migrations tren SQLite..."
     python3 manage.py migrate --noinput
+    echo ">> [OK] Migrations tren SQLite thanh cong!"
 fi
 
 # 2. Tu dong nap fixtures khoi tao neu database moi
@@ -73,6 +87,7 @@ if command -v uwsgi &> /dev/null; then
         --threads 4 \
         --static-map "/static=/assets/static" \
         --static-map "/media=/media" \
+        --pythonpath /app/dmoj/repo \
         --wsgi-file "dmoj/wsgi.py" \
         --vacuum \
         --buffer-size 65535
@@ -80,4 +95,3 @@ else
     echo ">> Khoi chay Django server..."
     exec python3 manage.py runserver "0.0.0.0:${PORT}" --insecure
 fi
-

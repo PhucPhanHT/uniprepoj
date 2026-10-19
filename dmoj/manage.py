@@ -5,7 +5,14 @@ import sys
 try:
     import MySQLdb  # noqa: F401, imported for side effect
 except ImportError:
-    import dmoj_install_pymysql  # noqa: F401, imported for side effect
+    try:
+        import dmoj_install_pymysql  # noqa: F401, imported for side effect
+    except ImportError:
+        try:
+            import pymysql
+            pymysql.install_as_MySQLdb()
+        except ImportError:
+            pass
 
 if __name__ == '__main__':
     # Django 4+ compatibility shim for legacy apps (reversion, etc.)

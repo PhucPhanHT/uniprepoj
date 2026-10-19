@@ -52,11 +52,11 @@ RUN pip3 install --no-cache-dir "setuptools<70" "wheel<0.44" && \
     pip3 install --no-cache-dir "Django>=3.2.25,<4.0" && \
     pip3 install --no-cache-dir -r requirements.txt && \
     pip3 install --no-cache-dir -r additional_requirements.txt && \
-    pip3 install --no-cache-dir requests pyyaml whitenoise gunicorn psycopg2-binary "Django>=3.2.25,<4.0"
+    pip3 install --no-cache-dir requests pyyaml whitenoise gunicorn psycopg2-binary dj-database-url lxml_html_clean "Django>=3.2.25,<4.0"
 
-# 6. Sao chép các cấu hình, fixtures, Piston judge và bài tập mẫu
+# 6. Sao chép các cấu hình, fixtures, Piston judge, migrations và bài tập mẫu
 WORKDIR /app
-RUN mkdir -p dmoj/repo/judge/fixtures dmoj/repo/resources /problems /media /assets/static && \
+RUN mkdir -p dmoj/repo/judge/fixtures dmoj/repo/judge/migrations dmoj/repo/resources /problems /media /assets/static /data && \
     cp -f dmoj/config/config.js dmoj/repo/websocket/config.js 2>/dev/null || true && \
     cp -f dmoj/config/local_settings.py dmoj/repo/dmoj/local_settings.py 2>/dev/null || true && \
     cp -f dmoj/config/local_urls.py dmoj/repo/dmoj/local_urls.py 2>/dev/null || true && \
@@ -65,6 +65,7 @@ RUN mkdir -p dmoj/repo/judge/fixtures dmoj/repo/resources /problems /media /asse
     cp -f dmoj/wsgi.py dmoj/repo/dmoj/wsgi.py 2>/dev/null || true && \
     cp -f dmoj/judge/piston_judge.py dmoj/repo/judge/piston_judge.py 2>/dev/null || true && \
     cp -f dmoj/judge/judgeapi.py dmoj/repo/judge/judgeapi.py 2>/dev/null || true && \
+    cp -rf dmoj/migrations/* dmoj/repo/judge/migrations/ 2>/dev/null || true && \
     cp -rf dmoj/fixtures/* dmoj/repo/judge/fixtures/ 2>/dev/null || true && \
     cp -rf dmoj/resources/* dmoj/repo/resources/ 2>/dev/null || true && \
     cp -rf dmoj/sample_problems/* /problems/ 2>/dev/null || true && \

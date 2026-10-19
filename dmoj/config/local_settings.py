@@ -99,6 +99,16 @@ if database_url:
                 'PORT': str(parsed.port or default_port),
             }
         }
+
+    # Cấu hình timeouts và options tối ưu cho Render / Supabase / Neon
+    default_db = DATABASES.get('default', {})
+    if default_db.get('ENGINE') == 'django.db.backends.postgresql':
+        default_db.setdefault('OPTIONS', {})
+        default_db['OPTIONS'].setdefault('connect_timeout', 10)
+    elif default_db.get('ENGINE') == 'django.db.backends.mysql':
+        default_db.setdefault('OPTIONS', {})
+        default_db['OPTIONS'].setdefault('charset', 'utf8mb4')
+        default_db['OPTIONS'].setdefault('connect_timeout', 10)
 elif os.environ.get('MYSQL_HOST'):
     DATABASES = {
         'default': {

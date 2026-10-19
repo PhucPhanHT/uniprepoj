@@ -38,6 +38,7 @@ if not exist "repo\resources\icons" mkdir "repo\resources\icons"
 xcopy /E /I /Y fixtures repo\judge\fixtures >nul 2>&1
 xcopy /E /I /Y resources repo\resources >nul 2>&1
 xcopy /E /I /Y sample_problems problems >nul 2>&1
+if exist "migrations" xcopy /E /I /Y migrations repo\judge\migrations >nul 2>&1
 
 echo ^>^> Khoi tao thu muc va cau hinh NDOJ hoan tat!
 endlocal
