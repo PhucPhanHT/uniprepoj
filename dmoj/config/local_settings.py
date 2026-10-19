@@ -8,23 +8,23 @@
 # The settings listed here are of special interest in configuring the site.
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# You may use this command to generate a key:
-# python3 -c 'from django.core.management.utils import get_random_secret_key;print(get_random_secret_key())'
-SECRET_KEY = os.environ.get('SECRET_KEY', '')
+SECRET_KEY = os.environ.get('SECRET_KEY') or 'ndoj-uniprep-oj-secret-key-thpt-nguyen-du-ha-tinh-c892bf34e56a7d8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', '0') == '1'
 HOST = os.environ.get('HOST', 'localhost')
 
 # Cho phép truy cập từ mọi Host hoặc danh sách trong biến môi trường ALLOWED_HOSTS
-ALLOWED_HOSTS = [h.strip() for h in os.environ.get('ALLOWED_HOSTS', '*').split(',') if h.strip()]
+ALLOWED_HOSTS = ['*'] if os.environ.get('ALLOWED_HOSTS') in (None, '*', '') else [h.strip() for h in os.environ.get('ALLOWED_HOSTS', '*').split(',') if h.strip()]
 
-# CSRF Trusted Origins (Hỗ trợ truy cập cả HTTP và HTTPS qua reverse proxy)
+# CSRF Trusted Origins (Hỗ trợ truy cập cả HTTP và HTTPS qua reverse proxy và Render domain)
 CSRF_TRUSTED_ORIGINS = [
     os.environ.get('SITE_FULL_URL', 'http://localhost').rstrip('/'),
     'http://localhost',
     'http://127.0.0.1',
     'http://localhost:80',
     'http://localhost:8080',
+    'https://*.onrender.com',
+    'http://*.onrender.com',
 ]
 
 # Optional apps that DMOJ can make use of.

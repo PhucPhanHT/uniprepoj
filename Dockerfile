@@ -6,7 +6,10 @@ ENV DEBIAN_FRONTEND=noninteractive \
     PORT=8000 \
     STATIC_ROOT=/assets/static/ \
     MEDIA_ROOT=/media/ \
-    DMOJ_PROBLEM_DATA_ROOT=/problems/
+    DMOJ_PROBLEM_DATA_ROOT=/problems/ \
+    SECRET_KEY="ndoj-uniprep-oj-secret-key-thpt-nguyen-du-ha-tinh-c892bf34e56a7d8" \
+    USE_PISTON_JUDGE=1 \
+    PISTON_FALLBACK_LOCAL=1
 
 # 1. Cài đặt các gói hệ thống, compilers và Pandoc
 RUN apt-get update && \

@@ -8,6 +8,11 @@ echo "=========================================================="
 PORT="${PORT:-8000}"
 echo ">> Port listening on: $PORT"
 
+if [ -z "$SECRET_KEY" ]; then
+    export SECRET_KEY="ndoj-uniprep-oj-secret-key-thpt-nguyen-du-ha-tinh-c892bf34e56a7d8"
+    echo ">> SECRET_KEY tu dong tao khoa mac dinh an toan."
+fi
+
 cd /app/dmoj/repo
 
 # 1. Chạy migrations cho database (MariaDB/MySQL hoặc SQLite fallback)
