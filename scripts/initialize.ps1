@@ -25,6 +25,12 @@ if (Test-Path (Join-Path $dmojDir "judge\piston_judge.py")) {
 if (Test-Path (Join-Path $dmojDir "judge\judgeapi.py")) {
     Copy-Item -Force (Join-Path $dmojDir "judge\judgeapi.py") (Join-Path $dmojDir "repo\judge\judgeapi.py")
 }
+if (Test-Path (Join-Path $dmojDir "manage.py")) {
+    Copy-Item -Force (Join-Path $dmojDir "manage.py") (Join-Path $dmojDir "repo\manage.py")
+}
+if (Test-Path (Join-Path $dmojDir "wsgi.py")) {
+    Copy-Item -Force (Join-Path $dmojDir "wsgi.py") (Join-Path $dmojDir "repo\dmoj\wsgi.py")
+}
 if (Test-Path (Join-Path $dmojDir "additional_requirements.txt")) {
     Copy-Item -Force (Join-Path $dmojDir "additional_requirements.txt") (Join-Path $dmojDir "repo\additional_requirements.txt")
 }

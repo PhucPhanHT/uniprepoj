@@ -28,6 +28,8 @@ copy /Y config\uwsgi.ini repo\uwsgi.ini >nul
 copy /Y config\judge.yml problems\judge.yml >nul
 if exist "judge\piston_judge.py" copy /Y judge\piston_judge.py repo\judge\piston_judge.py >nul
 if exist "judge\judgeapi.py" copy /Y judge\judgeapi.py repo\judge\judgeapi.py >nul
+if exist "manage.py" copy /Y manage.py repo\manage.py >nul
+if exist "wsgi.py" copy /Y wsgi.py repo\dmoj\wsgi.py >nul
 if exist "additional_requirements.txt" copy /Y additional_requirements.txt repo\additional_requirements.txt >nul
 
 if not exist "repo\judge\fixtures" mkdir "repo\judge\fixtures"

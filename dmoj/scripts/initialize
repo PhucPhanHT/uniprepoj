@@ -20,6 +20,8 @@ cp config/uwsgi.ini repo/
 cp config/judge.yml problems/
 [ -f "judge/piston_judge.py" ] && cp judge/piston_judge.py repo/judge/
 [ -f "judge/judgeapi.py" ] && cp judge/judgeapi.py repo/judge/
+[ -f "manage.py" ] && cp manage.py repo/
+[ -f "wsgi.py" ] && cp wsgi.py repo/dmoj/
 [ -f "additional_requirements.txt" ] && cp additional_requirements.txt repo/
 
 
