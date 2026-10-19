@@ -92,9 +92,9 @@ if database_url:
         DATABASES = {
             'default': {
                 'ENGINE': engine,
-                'NAME': parsed.path.lstrip('/'),
-                'USER': parsed.username or '',
-                'PASSWORD': parsed.password or '',
+                'NAME': urllib.parse.unquote(parsed.path.lstrip('/')),
+                'USER': urllib.parse.unquote(parsed.username or ''),
+                'PASSWORD': urllib.parse.unquote(parsed.password or ''),
                 'HOST': parsed.hostname or '',
                 'PORT': str(parsed.port or default_port),
             }
