@@ -48,7 +48,7 @@ WORKDIR /app
 RUN cp -f dmoj/additional_requirements.txt dmoj/repo/additional_requirements.txt 2>/dev/null || true
 
 WORKDIR /app/dmoj/repo
-RUN pip3 install --no-cache-dir "setuptools<70" "wheel" && \
+RUN pip3 install --no-cache-dir "setuptools<70" "wheel<0.44" && \
     pip3 install --no-cache-dir "Django>=3.2.25,<4.0" && \
     pip3 install --no-cache-dir -r requirements.txt && \
     pip3 install --no-cache-dir -r additional_requirements.txt && \

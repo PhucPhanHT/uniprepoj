@@ -15,9 +15,18 @@ fi
 
 cd /app/dmoj/repo
 
-# 1. Chạy migrations cho database (MariaDB/MySQL hoặc SQLite fallback)
+# 1. Chạy migrations cho database (PostgreSQL/MySQL hoặc SQLite fallback)
 echo ">> [1/4] Dang thuc thi database migrations..."
-python3 manage.py migrate --noinput
+if ! python3 manage.py migrate --noinput; then
+    echo "=========================================================="
+    echo ">> [CANH BAO] Khong the ket noi toi DATABASE_URL hien tai!"
+    echo ">> Nguyen nhan: Supabase Direct URL su dung dia chi IPv6 (Render free khong ho tro IPv6 outbound)."
+    echo ">> Giai phap: Hay lay Connection Pooler URL tu Supabase (host aws-0-*.pooler.supabase.com cong 6543) hoac dung Render PostgreSQL."
+    echo ">> He thong tu dong chuyen sang SQLite noi bo de Web van khoi dong Live thanh cong!"
+    echo "=========================================================="
+    export DATABASE_URL=""
+    python3 manage.py migrate --noinput
+fi
 
 # 2. Tu dong nap fixtures khoi tao neu database moi
 echo ">> [2/4] Kiem tra du lieu mac dinh (admin, problems, languages)..."
