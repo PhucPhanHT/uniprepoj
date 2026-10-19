@@ -210,8 +210,8 @@ STATIC_ROOT = '/assets/static/'
 # URL to access static files.
 STATIC_URL = '/static/'
 
-# Uncomment to use hashed filenames with the cache framework.
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+# Do not use ManifestStaticFilesStorage as it throws 500 ValueError on any missing asset.
+# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
 DMOJ_RESOURCES = '/assets/resources/'
 

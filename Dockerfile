@@ -65,15 +65,17 @@ RUN mkdir -p dmoj/repo/judge/fixtures dmoj/repo/judge/migrations dmoj/repo/resou
     cp -f dmoj/wsgi.py dmoj/repo/dmoj/wsgi.py 2>/dev/null || true && \
     cp -f dmoj/judge/piston_judge.py dmoj/repo/judge/piston_judge.py 2>/dev/null || true && \
     cp -f dmoj/judge/judgeapi.py dmoj/repo/judge/judgeapi.py 2>/dev/null || true && \
+    cp -f dmoj/judge/template_context.py dmoj/repo/judge/template_context.py 2>/dev/null || true && \
     cp -rf dmoj/migrations/* dmoj/repo/judge/migrations/ 2>/dev/null || true && \
     cp -rf dmoj/fixtures/* dmoj/repo/judge/fixtures/ 2>/dev/null || true && \
     cp -rf dmoj/resources/* dmoj/repo/resources/ 2>/dev/null || true && \
     cp -rf dmoj/sample_problems/* /problems/ 2>/dev/null || true && \
     cp -rf dmoj/problems/* /problems/ 2>/dev/null || true
 
-# 7. Thu thập static files
+# 7. Biên dịch i18n và thu thập static files
 WORKDIR /app/dmoj/repo
-RUN python3 manage.py collectstatic --noinput || true
+RUN python3 manage.py compilejsi18n || true && \
+    python3 manage.py collectstatic --noinput || true
 
 WORKDIR /app
 RUN chmod +x scripts/render_entrypoint.sh 2>/dev/null || true

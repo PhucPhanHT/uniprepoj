@@ -74,6 +74,13 @@ if [ -d "/app/dmoj/problems" ]; then
     cp -rn /app/dmoj/problems/* /problems/ 2>/dev/null || true
 fi
 
+# Dam bao static files va jsi18n luon day du
+if [ ! -f "/assets/static/jsi18n/vi/djangojs.js" ] || [ ! -f "/assets/static/style.css" ]; then
+    echo ">> Dam bao static files va jsi18n da duoc tao..."
+    python3 manage.py compilejsi18n || true
+    python3 manage.py collectstatic --noinput || true
+fi
+
 # 4. Khoi dong Web Server
 echo ">> [4/4] Khoi dong Web Server tren cong $PORT..."
 

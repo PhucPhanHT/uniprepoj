@@ -32,3 +32,4 @@ class Migration(migrations.Migration):
     operations = [
         migrations.RunPython(strip_error_html, migrations.RunPython.noop, atomic=True),
     ]
+
