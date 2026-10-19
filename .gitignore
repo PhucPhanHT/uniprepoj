@@ -4,3 +4,7 @@ dmoj/media/
 dmoj/problems/
 dmoj/backups/
 dmoj/environment/*.env
+__pycache__/
+*.py[cod]
+*$py.class
+

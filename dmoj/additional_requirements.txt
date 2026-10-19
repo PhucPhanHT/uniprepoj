@@ -1,0 +1,8 @@
+mysqlclient
+uwsgi
+websocket-client
+lxml_html_clean
+requests
+pyyaml
+whitenoise
+gunicorn

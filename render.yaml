@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: uniprepoj
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    region: singapore
+    envVars:
+      - key: DEBUG
+        value: "0"
+      - key: USE_PISTON_JUDGE
+        value: "1"
+      - key: PISTON_API_URL
+        value: "http://localhost:2000/api/v2/execute"
+      - key: PISTON_FALLBACK_LOCAL
+        value: "1"
+      - key: ALLOWED_HOSTS
+        value: "*"
+      - key: SECRET_KEY
+        generateValue: true

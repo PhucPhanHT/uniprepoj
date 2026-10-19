@@ -75,9 +75,31 @@ flowchart TD
 
 ---
 
-## ⚡ 3. Hướng dẫn Khởi chạy Nhanh
+---
 
-### Cách 1: Chạy trên Máy tính cá nhân (Windows PowerShell / Docker Desktop)
+## ⚡ 3. Hướng dẫn Khởi chạy & Triển khai
+
+### Cách 1: Triển khai Lên Web Đám Mây (Render.com / Railway / Fly.io) 🚀
+
+Hệ thống đã được đóng gói sẵn **Root `Dockerfile`** và tệp cấu hình **`render.yaml` (Blueprint)** giúp bạn triển khai trực tiếp từ GitHub lên Web mà **không bị lỗi thiếu Dockerfile**:
+
+1. Đẩy code lên GitHub:
+   ```bash
+   git add .
+   git commit -m "feat: Add root Dockerfile, Piston judge and web cloud deploy"
+   git push origin main
+   ```
+2. Đăng nhập vào [Render.com](https://render.com), chọn **New +** -> **Blueprint** (hoặc **Web Service**).
+3. Kết nối với repository GitHub `uniprepoj` của bạn.
+4. Render sẽ tự động đọc `Dockerfile` ở thư mục gốc, cài đặt môi trường, biên dịch assets và khởi động Web Service trên cổng `$PORT`.
+5. Sau khi quá trình build hoàn tất (khoảng 3-5 phút), trang web sẽ sẵn sàng truy cập trực tuyến với tên miền `*.onrender.com`.
+
+> [!NOTE]
+> **Chấm bài tự động trên Cloud (Piston API):** Trên các nền tảng container không hỗ trợ cgroups máy chấm DMOJ truyền thống, hệ thống tự động kích hoạt **Piston API Judge** và cơ chế fallback sandbox nội bộ để chấm điểm bài nộp của sinh viên ngay lập tức!
+
+---
+
+### Cách 2: Chạy trên Máy tính cá nhân (Windows PowerShell / Docker Desktop)
 
 1. Cài đặt **Docker Desktop** (bật chế độ WSL2) và khởi động Docker.
 2. Mở cửa sổ **PowerShell** tại thư mục dự án và thực hiện:
@@ -86,7 +108,7 @@ flowchart TD
 # Di chuyển vào thư mục dmoj
 cd dmoj
 
-# Khởi chạy toàn bộ hệ thống
+# Khởi chạy toàn bộ hệ thống (Bao gồm cả máy chấm Piston container trên port 2000)
 docker compose up -d
 ```
 
@@ -107,7 +129,7 @@ docker compose up -d
 
 ---
 
-### Cách 2: Triển khai 1-Chạm lên Máy chủ VPS Linux (Ubuntu / Debian)
+### Cách 3: Triển khai 1-Chạm lên Máy chủ VPS Linux (Ubuntu / Debian)
 
 Chuẩn bị một máy chủ Ubuntu (20.04 / 22.04 / 24.04 LTS), chạy đúng **1 lệnh duy nhất**:
 
@@ -123,7 +145,21 @@ sudo bash scripts/setup_ssl.sh your-domain.com
 
 ---
 
-## 🔐 4. Tài khoản Quản trị Mặc định (Default Admin)
+## 🤖 4. Hệ Thống Chấm Bài Tự Động Piston API
+
+Hệ thống tích hợp bộ chấm điểm **Piston API Engine** hỗ trợ đánh giá bài làm tự động đa ngôn ngữ:
+
+* **Phương thức hoạt động:** Khi sinh viên nộp bài qua giao diện web, mã nguồn được gửi tới **Piston API** kèm bộ testcase (`.in`/`.out`). Hệ thống đối soát kết quả chuẩn (Standard Checker), tính thời gian chạy, bộ nhớ và ghi nhận điểm số từng testcase trực tiếp qua WebSocket.
+* **Cơ chế Fallback thông minh:** Nếu máy chấm Piston từ xa không khả dụng hoặc bị giới hạn, hệ thống tự động chuyển tiếp sang **Sandbox Compiler nội bộ** (Python 3, GCC/G++ C++17) đảm bảo bài nộp của sinh viên luôn được chấm điểm đầy đủ, không bao giờ bị treo ở trạng thái `QU` (Queued) hay lỗi `IE` (Internal Error).
+* **Các biến môi trường cấu hình (trong `site.env` hoặc Render Dashboard):**
+  * `USE_PISTON_JUDGE=1`: Bật chế độ chấm bài tự động qua Piston API.
+  * `PISTON_API_URL`: Địa chỉ API endpoint Piston (`http://piston:2000/api/v2/execute` trên Docker compose hoặc URL tự host).
+  * `PISTON_API_KEY`: Khóa xác thực nếu sử dụng endpoint Piston có bảo mật Token.
+  * `PISTON_FALLBACK_LOCAL=1`: Bật chế độ chấm dự phòng nội bộ nếu API không phản hồi.
+
+---
+
+## 🔐 5. Tài khoản Quản trị Mặc định (Default Admin)
 
 * **URL Đăng nhập:** [http://localhost/accounts/login/](http://localhost/accounts/login/)
 * **Tên đăng nhập:** `admin`
@@ -131,6 +167,7 @@ sudo bash scripts/setup_ssl.sh your-domain.com
 * **Email quản trị:** `admin@uniprepoj.com`
 
 *(Bạn có thể đổi mật khẩu bất kỳ lúc nào sau khi đăng nhập tại trang thông tin cá nhân hoặc qua trang Quản trị Django `/admin/`)*.
+
 
 ---
 

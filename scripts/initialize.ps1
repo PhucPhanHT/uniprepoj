@@ -14,8 +14,20 @@ New-Item -ItemType Directory -Force -Path (Join-Path $dmojDir "backups") | Out-N
 # Copy configs vào submodule repo
 Copy-Item -Force (Join-Path $dmojDir "config\config.js") (Join-Path $dmojDir "repo\websocket\config.js")
 Copy-Item -Force (Join-Path $dmojDir "config\local_settings.py") (Join-Path $dmojDir "repo\dmoj\local_settings.py")
+if (Test-Path (Join-Path $dmojDir "config\local_urls.py")) {
+    Copy-Item -Force (Join-Path $dmojDir "config\local_urls.py") (Join-Path $dmojDir "repo\dmoj\local_urls.py")
+}
 Copy-Item -Force (Join-Path $dmojDir "config\uwsgi.ini") (Join-Path $dmojDir "repo\uwsgi.ini")
 Copy-Item -Force (Join-Path $dmojDir "config\judge.yml") (Join-Path $dmojDir "problems\judge.yml")
+if (Test-Path (Join-Path $dmojDir "judge\piston_judge.py")) {
+    Copy-Item -Force (Join-Path $dmojDir "judge\piston_judge.py") (Join-Path $dmojDir "repo\judge\piston_judge.py")
+}
+if (Test-Path (Join-Path $dmojDir "judge\judgeapi.py")) {
+    Copy-Item -Force (Join-Path $dmojDir "judge\judgeapi.py") (Join-Path $dmojDir "repo\judge\judgeapi.py")
+}
+if (Test-Path (Join-Path $dmojDir "additional_requirements.txt")) {
+    Copy-Item -Force (Join-Path $dmojDir "additional_requirements.txt") (Join-Path $dmojDir "repo\additional_requirements.txt")
+}
 
 # Copy fixtures và branding NDOJ
 New-Item -ItemType Directory -Force -Path (Join-Path $dmojDir "repo\judge\fixtures") | Out-Null

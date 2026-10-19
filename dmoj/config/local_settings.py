@@ -32,28 +32,45 @@ INSTALLED_APPS += ()
 
 # Caching. You can use memcached or redis instead.
 # Documentation: <https://docs.djangoproject.com/en/3.2/topics/cache/>
-CACHES = {
-    'default': {
-        'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': os.environ.get('REDIS_CACHING_URL', 'redis://redis:6379/0'),
-    },
-}
-
-# Your database credentials. Only MySQL is supported by DMOJ.
-# Documentation: <https://docs.djangoproject.com/en/3.2/ref/databases/>
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('MYSQL_DATABASE', 'dmoj'),
-        'USER': os.environ.get('MYSQL_USER', 'dmoj'),
-        'PASSWORD': os.environ.get('MYSQL_PASSWORD', ''),
-        'HOST': os.environ.get('MYSQL_HOST', 'db'),
-        'OPTIONS': {
-            'charset': 'utf8mb4',
-            'sql_mode': 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION',
+if os.environ.get('REDIS_CACHING_URL'):
+    CACHES = {
+        'default': {
+            'BACKEND': 'django_redis.cache.RedisCache',
+            'LOCATION': os.environ.get('REDIS_CACHING_URL', 'redis://redis:6379/0'),
         },
-    },
-}
+    }
+else:
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+            'LOCATION': 'uniprep-default-cache',
+        }
+    }
+
+# Your database credentials. MySQL in production/compose, SQLite fallback for single-container cloud deploy.
+# Documentation: <https://docs.djangoproject.com/en/3.2/ref/databases/>
+if os.environ.get('MYSQL_HOST'):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': os.environ.get('MYSQL_DATABASE', 'dmoj'),
+            'USER': os.environ.get('MYSQL_USER', 'dmoj'),
+            'PASSWORD': os.environ.get('MYSQL_PASSWORD', ''),
+            'HOST': os.environ.get('MYSQL_HOST', 'db'),
+            'PORT': os.environ.get('MYSQL_PORT', '3306'),
+            'OPTIONS': {
+                'charset': 'utf8mb4',
+                'sql_mode': 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION',
+            },
+        },
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.environ.get('SQLITE_PATH', os.path.join(BASE_DIR, 'db.sqlite3')),
+        }
+    }
 
 # Sessions.
 # Documentation: <https://docs.djangoproject.com/en/3.2/topics/http/sessions/>
@@ -161,7 +178,13 @@ MEDIA_URL = os.environ.get('MEDIA_URL', 'http://localhost/')
 ## Problem data settings.
 # This is the directory where all the problem data are stored.
 # Change this to somewhere more permanent.
-DMOJ_PROBLEM_DATA_ROOT = '/problems/'
+DMOJ_PROBLEM_DATA_ROOT = os.environ.get('DMOJ_PROBLEM_DATA_ROOT', '/problems/')
+
+## Piston Code Execution API settings
+USE_PISTON_JUDGE = os.environ.get('USE_PISTON_JUDGE', '1') == '1'
+PISTON_API_URL = os.environ.get('PISTON_API_URL', 'http://piston:2000/api/v2/execute')
+PISTON_API_KEY = os.environ.get('PISTON_API_KEY', '')
+PISTON_FALLBACK_LOCAL = os.environ.get('PISTON_FALLBACK_LOCAL', '1') == '1'
 
 ## Bridge controls.
 # The judge connection address and port; where the judges will connect to the site.

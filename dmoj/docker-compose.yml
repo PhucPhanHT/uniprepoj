@@ -16,6 +16,15 @@ services:
     restart: unless-stopped
     networks: [site]
 
+  piston:
+    container_name: ndoj_piston
+    image: ghcr.io/engineer-man/piston/api:latest
+    restart: unless-stopped
+    privileged: true
+    ports:
+      - "2000:2000"
+    networks: [site]
+
   base:
     build:
       context: .
